@@ -64,7 +64,7 @@ export function Nav() {
         style={{
           height: scrolled || mobileOpen ? 56 : 72,
           background:
-            scrolled || mobileOpen ? "rgba(15,20,24,0.82)" : "transparent",
+            scrolled || mobileOpen ? "var(--color-nav-bg)" : "transparent",
           backdropFilter: scrolled || mobileOpen ? "blur(16px)" : "none",
           WebkitBackdropFilter:
             scrolled || mobileOpen ? "blur(16px)" : "none",

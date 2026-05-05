@@ -21,10 +21,7 @@ export function Pillars() {
             }}
           >
             <span className="text-fg-1">Specifics, not</span>{" "}
-            <em
-              className="not-italic"
-              style={{ color: "var(--color-accent)", opacity: 0.9 }}
-            >
+            <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
               slogans.
             </em>
           </h2>

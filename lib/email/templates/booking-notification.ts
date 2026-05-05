@@ -30,20 +30,27 @@ function escape(s: string) {
 export function bookingNotificationEmail({
   reference,
   data,
+  bookingId,
+  baseUrl,
 }: {
   reference: string;
   data: BookingInput;
+  bookingId: string;
+  baseUrl: string;
 }) {
   const serviceLabel =
     SERVICES_BY_SLUG[data.service]?.shortTitle ?? data.service;
   const vehicle = `${data.vehicleYear} ${data.vehicleMake} ${data.vehicleModel}`;
   const trim = data.vehicleNotes?.trim();
   const notes = data.notes?.trim();
+  const adminUrl = `${baseUrl.replace(/\/$/, "")}/admin/${bookingId}`;
 
   const subject = `[Booking ${reference}] ${serviceLabel} · ${data.contactName} · ${vehicle}`;
 
   const text = [
     `New booking request — ${reference}`,
+    ``,
+    `Open in admin:  ${adminUrl}`,
     ``,
     `Service:        ${serviceLabel}`,
     `Preferred date: ${formatDate(data.preferredDate)}`,
@@ -101,8 +108,14 @@ export function bookingNotificationEmail({
             : ""
         }
 
-        <div style="margin-top:24px;padding-top:20px;border-top:1px solid #e3dfd6;font-size:12px;color:#6e7780;line-height:1.55;">
-          Reply directly to this email to respond to the customer — their address is set as reply-to.
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid #e3dfd6;text-align:center;">
+          <a href="${escape(adminUrl)}" style="display:inline-block;padding:12px 28px;background:#b8332e;color:#ffffff;text-decoration:none;border-radius:4px;font-size:14px;font-weight:500;letter-spacing:-0.005em;">
+            Open in admin →
+          </a>
+        </div>
+
+        <div style="margin-top:16px;font-size:12px;color:#6e7780;line-height:1.55;text-align:center;">
+          Or reply directly to this email — the customer's address is set as reply-to.
         </div>
       </div>
     </div>

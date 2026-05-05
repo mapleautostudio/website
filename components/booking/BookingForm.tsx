@@ -29,8 +29,7 @@ const inputStyle: React.CSSProperties = {
   fontFamily: "var(--font-body)",
   fontSize: 15,
   letterSpacing: "-0.005em",
-  outline: "none",
-  transition: "border-color 200ms var(--ease-precise)",
+  transition: "border-color 200ms var(--ease-precise), box-shadow 200ms var(--ease-precise)",
 };
 
 const textareaStyle: React.CSSProperties = {

@@ -76,15 +76,20 @@ export default function AboutPage() {
               <h1
                 className="m-0 font-display"
                 style={{
-                  fontSize: "clamp(44px, 9vw, 96px)",
+                  fontSize: "clamp(2.5rem, 9vw, 6rem)",
                   fontWeight: 300,
                   letterSpacing: "-0.03em",
                   lineHeight: 0.96,
+                  hyphens: "none",
+                  overflowWrap: "normal",
+                  paddingRight: "1rem",
                 }}
               >
                 <span className="text-fg-1">Specifics,</span>
                 <br />
-                <span className="text-fg-2">not slogans.</span>
+                <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
+                  not slogans.
+                </em>
               </h1>
               <p className="m-0 body-lg" style={{ maxWidth: 640 }}>
                 An independent detailing shop. We work on a small number of cars at a time, document everything we do, and quote in writing before we start.

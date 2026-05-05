@@ -8,7 +8,7 @@ export const SHOP = {
     "Independent detailing & accessories studio in Saskatoon. By appointment — cars, trucks, and trailerable boats.",
   partnership: "In partnership with Akaal Auto Hub.",
   location: {
-    line1: "331 60th Street E, Unit 10",
+    line1: "331 60 ST E",
     city: "Saskatoon, SK S7K 8C8",
     note: "Bay entrance at the south end of the unit.",
     parking: "Customer parking out front.",

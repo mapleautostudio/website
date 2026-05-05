@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Phone, Mail, AlertCircle } from "lucide-react";
 import { requireAdmin } from "@/lib/admin/guard";
@@ -21,13 +22,14 @@ const TIME_WINDOW_LABEL: Record<BookingRow["preferred_time_window"], string> = {
 const STATUS_ACTIONS: Array<{
   status: BookingStatus;
   label: string;
-  variant: "primary" | "ghost" | "danger";
+  pastLabel: string;
+  variant: "primary" | "ghost";
 }> = [
-  { status: "confirmed", label: "Confirm", variant: "primary" },
-  { status: "declined", label: "Decline", variant: "danger" },
-  { status: "completed", label: "Mark complete", variant: "ghost" },
-  { status: "no_show", label: "Mark no-show", variant: "ghost" },
-  { status: "new", label: "Reset to new", variant: "ghost" },
+  { status: "confirmed", label: "Confirm", pastLabel: "confirmed", variant: "primary" },
+  { status: "declined", label: "Decline", pastLabel: "declined", variant: "ghost" },
+  { status: "completed", label: "Mark complete", pastLabel: "completed", variant: "ghost" },
+  { status: "no_show", label: "Mark no-show", pastLabel: "marked no-show", variant: "ghost" },
+  { status: "new", label: "Reset to new", pastLabel: "reset to new", variant: "ghost" },
 ];
 
 function formatDate(iso: string) {
@@ -249,44 +251,46 @@ export default async function AdminBookingDetailPage({
               >
                 <span className="eyebrow block mb-4">UPDATE STATUS</span>
                 <div className="flex flex-col gap-2">
-                  {STATUS_ACTIONS.map((a) => {
+                  {STATUS_ACTIONS.map((a, i) => {
                     const isCurrent = b.status === a.status;
                     return (
-                      <form
-                        key={a.status}
-                        action={updateBookingStatus}
-                      >
-                        <input type="hidden" name="id" value={b.id} />
-                        <input
-                          type="hidden"
-                          name="status"
-                          value={a.status}
-                        />
-                        <button
-                          type="submit"
-                          disabled={isCurrent}
-                          className={
-                            a.variant === "primary"
-                              ? "btn btn--primary"
-                              : "btn btn--ghost"
-                          }
-                          style={{
-                            width: "100%",
-                            justifyContent: "center",
-                            opacity: isCurrent ? 0.4 : 1,
-                            cursor: isCurrent ? "default" : "pointer",
-                            ...(a.variant === "danger"
-                              ? {
-                                  borderColor: "var(--color-danger)",
-                                  color: "var(--color-danger)",
-                                  background: "transparent",
-                                }
-                              : {}),
-                          }}
-                        >
-                          {isCurrent ? `Already ${a.label.toLowerCase()}` : a.label}
-                        </button>
-                      </form>
+                      <Fragment key={a.status}>
+                        {i === 1 && (
+                          <div
+                            aria-hidden="true"
+                            style={{
+                              height: 1,
+                              background: "var(--color-hairline)",
+                              margin: "6px 0",
+                            }}
+                          />
+                        )}
+                        <form action={updateBookingStatus}>
+                          <input type="hidden" name="id" value={b.id} />
+                          <input
+                            type="hidden"
+                            name="status"
+                            value={a.status}
+                          />
+                          <button
+                            type="submit"
+                            disabled={isCurrent}
+                            className={
+                              a.variant === "primary"
+                                ? "btn btn--primary"
+                                : "btn btn--ghost"
+                            }
+                            style={{
+                              width: "100%",
+                              justifyContent: "center",
+                              opacity: isCurrent ? 0.4 : 1,
+                              cursor: isCurrent ? "default" : "pointer",
+                            }}
+                          >
+                            {isCurrent ? `Already ${a.pastLabel}` : a.label}
+                          </button>
+                        </form>
+                      </Fragment>
                     );
                   })}
                 </div>

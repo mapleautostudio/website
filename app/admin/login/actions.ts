@@ -25,7 +25,22 @@ export async function login(
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    return { error: "Invalid email or password." };
+    console.error("[admin login] supabase auth error", {
+      email,
+      code: error.code,
+      message: error.message,
+    });
+    if (error.code === "email_not_confirmed") {
+      return {
+        error:
+          "This account exists but its email isn't confirmed yet. Confirm it in the Supabase dashboard and retry.",
+      };
+    }
+    // Any other auth failure after the allowlist check has passed is a
+    // credential mismatch (wrong password, or user not yet provisioned in
+    // Supabase Auth). Don't reuse the "not authorized" copy — that one is
+    // reserved for accounts that aren't on the admin allowlist.
+    return { error: "Email or password is incorrect." };
   }
 
   redirect("/admin");

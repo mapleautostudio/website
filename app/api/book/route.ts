@@ -95,7 +95,14 @@ export async function POST(request: Request) {
   // Booking is persisted. Email is now best-effort: a failure here doesn't
   // lose the booking, it just means Khus has to refresh the admin view
   // instead of seeing it land in the inbox.
-  const { subject, text, html } = bookingNotificationEmail({ reference, data });
+  const incoming = new URL(request.url);
+  const baseUrl = `${incoming.protocol}//${incoming.host}`;
+  const { subject, text, html } = bookingNotificationEmail({
+    reference,
+    data,
+    bookingId: inserted.id,
+    baseUrl,
+  });
 
   try {
     const resend = getResend();

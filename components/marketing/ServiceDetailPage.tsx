@@ -5,6 +5,10 @@ import { BOOKING_HREF } from "@/lib/content/contact";
 
 export function ServiceDetailPage({ service }: { service: Service }) {
   const Icon = service.icon;
+  const headline = service.hero.headline;
+  const commaIdx = headline.indexOf(",");
+  const headlineFirst = commaIdx >= 0 ? headline.slice(0, commaIdx + 1) : headline;
+  const headlineSecond = commaIdx >= 0 ? headline.slice(commaIdx + 1).trim() : null;
 
   return (
     <main>
@@ -21,7 +25,7 @@ export function ServiceDetailPage({ service }: { service: Service }) {
             <ArrowLeft size={14} strokeWidth={1.5} /> All services
           </Link>
 
-          <div className="max-w-[920px] flex flex-col gap-8">
+          <div className="max-w-230 flex flex-col gap-8">
             <div className="flex items-center gap-4">
               <Icon size={28} strokeWidth={1.5} className="text-chrome" />
               <span className="eyebrow">{service.hero.eyebrow}</span>
@@ -35,7 +39,16 @@ export function ServiceDetailPage({ service }: { service: Service }) {
                 lineHeight: 0.98,
               }}
             >
-              {service.hero.headline}
+              {headlineSecond ? (
+                <>
+                  <span className="text-fg-1">{headlineFirst}</span>{" "}
+                  <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
+                    {headlineSecond}
+                  </em>
+                </>
+              ) : (
+                <span className="text-fg-1">{headlineFirst}</span>
+              )}
             </h1>
             <p className="m-0 body-lg" style={{ maxWidth: 640 }}>
               {service.hero.sub}

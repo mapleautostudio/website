@@ -14,14 +14,10 @@ export function HeroVideo({ sources }: { sources: string[] }) {
 
   return (
     <div className="absolute inset-0 z-0" aria-hidden="true">
+      {/* Base fill in case the video hasn't mounted yet */}
       <div
         className="absolute inset-0"
-        style={{
-          background: `radial-gradient(120% 70% at 50% 35%,
-            color-mix(in srgb, var(--color-elevated) 80%, transparent) 0%,
-            var(--color-surface) 55%,
-            var(--color-surface-deep) 100%)`,
-        }}
+        style={{ background: "var(--color-surface-deep)" }}
       />
 
       {src && (
@@ -36,26 +32,34 @@ export function HeroVideo({ sources }: { sources: string[] }) {
           preload="auto"
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
           style={{
-            filter: "brightness(0.55) saturate(0.65) contrast(1.05)",
+            filter: "var(--hero-video-filter)",
           }}
         />
       )}
 
+      {/* Top vignette — gentle, just enough to anchor the nav */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background: `linear-gradient(180deg,
-            color-mix(in srgb, var(--color-surface) 45%, transparent) 0%,
-            color-mix(in srgb, var(--color-surface) 55%, transparent) 50%,
-            var(--color-surface) 100%)`,
+            color-mix(in srgb, var(--color-surface-deep) 35%, transparent) 0%,
+            color-mix(in srgb, var(--color-surface-deep) 12%, transparent) 18%,
+            transparent 32%)`,
         }}
       />
 
+      {/* Bottom scrim — gradual ramp so the hero dissolves into the page
+          smoothly instead of cutting off at a hard line. */}
       <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `linear-gradient(0deg, transparent 24%, var(--color-chrome) 25%, var(--color-chrome) 26%, transparent 27%, transparent 74%, var(--color-chrome) 75%, var(--color-chrome) 76%, transparent 77%), linear-gradient(90deg, transparent 24%, var(--color-chrome) 25%, var(--color-chrome) 26%, transparent 27%, transparent 74%, var(--color-chrome) 75%, var(--color-chrome) 76%, transparent 77%)`,
-          backgroundSize: "80px 80px",
+          background: `linear-gradient(180deg,
+            transparent 0%,
+            transparent 35%,
+            color-mix(in srgb, var(--color-surface-deep) 18%, transparent) 55%,
+            color-mix(in srgb, var(--color-surface-deep) 45%, transparent) 72%,
+            color-mix(in srgb, var(--color-surface-deep) 80%, transparent) 88%,
+            var(--color-surface-deep) 100%)`,
         }}
       />
     </div>

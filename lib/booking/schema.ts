@@ -66,9 +66,10 @@ export const bookingSchema = z.object({
   contactPhone: z
     .string()
     .trim()
-    .min(7, "Phone is required")
-    .max(30, "Phone is too long")
-    .regex(/^[0-9 +()\-.]+$/, "Phone can only contain digits and + ( ) - ."),
+    .min(1, "Phone is required")
+    .regex(/^[0-9 +()\-.]+$/, "Enter a valid phone number")
+    .min(7, "Phone is too short")
+    .max(30, "Phone is too long"),
   contactEmail: z
     .string()
     .trim()

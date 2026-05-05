@@ -65,20 +65,25 @@ export default function ProcessPage() {
               <ArrowLeft size={14} strokeWidth={1.5} /> Home
             </Link>
 
-            <div className="max-w-[920px] flex flex-col gap-6 md:gap-8">
+            <div className="max-w-230 flex flex-col gap-6 md:gap-8">
               <span className="eyebrow">PROCESS · 6 STEPS</span>
               <h1
                 className="m-0 font-display"
                 style={{
-                  fontSize: "clamp(44px, 9vw, 96px)",
+                  fontSize: "clamp(2.5rem, 9vw, 6rem)",
                   fontWeight: 300,
                   letterSpacing: "-0.03em",
                   lineHeight: 0.96,
+                  hyphens: "none",
+                  overflowWrap: "normal",
+                  paddingRight: "1rem",
                 }}
               >
                 <span className="text-fg-1">How a job</span>
                 <br />
-                <span className="text-fg-2">runs.</span>
+                <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
+                  runs.
+                </em>
               </h1>
               <p className="m-0 body-lg" style={{ maxWidth: 640 }}>
                 Drop the keys, walk through what we found, get a written quote before any product touches paint. Photographed start to finish.
@@ -164,7 +169,7 @@ export default function ProcessPage() {
 
         <section style={{ paddingBlock: 96 }}>
           <div className="container-x">
-            <div className="max-w-[760px] mx-auto text-center flex flex-col gap-6">
+            <div className="max-w-190 mx-auto text-center flex flex-col gap-6">
               <span className="eyebrow block">WHAT YOU WON&apos;T GET</span>
               <h2
                 className="m-0 font-display"

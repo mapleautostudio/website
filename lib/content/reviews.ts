@@ -62,7 +62,7 @@ export const PILLARS = [
     body: "Before/after photos of every panel ship to your phone before pickup. 4.9 star average across 213 verified Google reviews — we don't curate them and we don't pay for them.",
   },
   {
-    big: "No",
+    big: "0",
     small: "surprise quotes",
     title: "Quoted before we start.",
     body: "Coatings, correction, tint — all priced by vehicle and condition before any product touches paint. If a job runs longer than estimated, the quote doesn't.",

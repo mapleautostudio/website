@@ -10,10 +10,10 @@ export function CtaBand() {
     >
       <div className="container-x">
         <div
-          className="flex flex-col gap-10 lg:grid lg:gap-12 lg:items-end"
+          className="flex flex-col gap-10 lg:grid lg:gap-20 lg:items-end"
           style={{
             gridTemplateColumns: "1fr auto",
-            paddingTop: 48,
+            paddingTop: 56,
             borderTop: "1px solid var(--color-hairline)",
           }}
         >
@@ -30,10 +30,7 @@ export function CtaBand() {
             >
               <span className="text-fg-1">Book service.</span>
               <br />
-              <em
-                className="not-italic"
-                style={{ color: "var(--color-accent)", opacity: 0.9 }}
-              >
+              <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
                 We confirm within the hour.
               </em>
             </h2>

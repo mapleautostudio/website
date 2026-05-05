@@ -56,10 +56,7 @@ export function Reviews() {
               }}
             >
               <span className="text-fg-1">From the</span>{" "}
-              <em
-                className="not-italic"
-                style={{ color: "var(--color-accent)", opacity: 0.9 }}
-              >
+              <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
                 service log.
               </em>
             </h2>
@@ -101,33 +98,47 @@ export function Reviews() {
           <ReviewMeta r={HERO_REVIEW} />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {SUPPORTING_REVIEWS.map((r, i) => (
-            <div
-              key={i}
-              className="card"
-              style={{
-                padding: "clamp(20px, 4vw, 28px)",
-                background: "var(--color-elevated)",
-              }}
-            >
-              <Stars />
-              <p
-                className="m-0 mt-4 text-fg-1"
-                style={{ fontSize: 14, lineHeight: 1.55 }}
-              >
-                {r.body}
-              </p>
-              <hr
-                className="my-5"
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          {SUPPORTING_REVIEWS.map((r, i) => {
+            const span = i === 0 ? "md:col-span-5" : i === 1 ? "md:col-span-4" : "md:col-span-3";
+            const bodySize = i === 0 ? 16 : i === 1 ? 14 : 13;
+            const bodyLineClamp = i === 2 ? 3 : undefined;
+            return (
+              <div
+                key={i}
+                className={`card ${span}`}
                 style={{
-                  border: 0,
-                  borderTop: "1px solid var(--color-hairline)",
+                  padding: "clamp(20px, 4vw, 28px)",
+                  background: "var(--color-elevated)",
                 }}
-              />
-              <ReviewMeta r={r} />
-            </div>
-          ))}
+              >
+                <Stars />
+                <p
+                  className="m-0 mt-4 text-fg-1"
+                  style={{
+                    fontSize: bodySize,
+                    lineHeight: 1.55,
+                    ...(bodyLineClamp && {
+                      display: "-webkit-box",
+                      WebkitLineClamp: bodyLineClamp,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }),
+                  }}
+                >
+                  {r.body}
+                </p>
+                <hr
+                  className="my-5"
+                  style={{
+                    border: 0,
+                    borderTop: "1px solid var(--color-hairline)",
+                  }}
+                />
+                <ReviewMeta r={r} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

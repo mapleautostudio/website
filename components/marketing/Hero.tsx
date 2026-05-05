@@ -18,17 +18,17 @@ export function Hero() {
           <h1
             className="reveal reveal-2 m-0 font-display font-light"
             style={{
-              fontSize: "clamp(44px, 9vw, 96px)",
+              fontSize: "clamp(2.5rem, 9vw, 6rem)",
               lineHeight: 0.96,
               letterSpacing: "-0.03em",
+              hyphens: "none",
+              overflowWrap: "normal",
+              paddingRight: "1rem",
             }}
           >
             <span className="text-fg-1">Finish,</span>
             <br />
-            <em
-              className="not-italic"
-              style={{ color: "var(--color-accent)", opacity: 0.9 }}
-            >
+            <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
               calibrated.
             </em>
           </h1>

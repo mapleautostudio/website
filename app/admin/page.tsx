@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, AlertCircle } from "lucide-react";
+import { ArrowRight, AlertCircle, Search, X } from "lucide-react";
 import { requireAdmin } from "@/lib/admin/guard";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 import { AdminHeader } from "@/components/admin/AdminHeader";
@@ -49,10 +49,10 @@ function formatTimestamp(iso: string) {
 export default async function AdminBookingsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ status?: string; q?: string }>;
 }) {
   const { user } = await requireAdmin();
-  const { status } = await searchParams;
+  const { status, q } = await searchParams;
   const activeFilter: "all" | BookingStatus =
     status === "new" ||
     status === "confirmed" ||
@@ -61,6 +61,11 @@ export default async function AdminBookingsPage({
     status === "no_show"
       ? status
       : "all";
+
+  // Strip PostgREST .or() reserved chars that would otherwise let a search
+  // term break out of the filter expression.
+  const rawQuery = (q ?? "").trim().slice(0, 100);
+  const safeQuery = rawQuery.replace(/[(),"\\]/g, "");
 
   const supabase = getSupabaseAdmin();
 
@@ -73,7 +78,25 @@ export default async function AdminBookingsPage({
     query = query.eq("status", activeFilter);
   }
 
+  if (safeQuery) {
+    const filters = [
+      `reference.ilike.%${safeQuery}%`,
+      `contact_name.ilike.%${safeQuery}%`,
+      `contact_email.ilike.%${safeQuery}%`,
+      `contact_phone.ilike.%${safeQuery}%`,
+      `vehicle_make.ilike.%${safeQuery}%`,
+      `vehicle_model.ilike.%${safeQuery}%`,
+    ];
+    if (/^\d{4}$/.test(safeQuery)) {
+      filters.push(`vehicle_year.eq.${safeQuery}`);
+    }
+    query = query.or(filters.join(","));
+  }
+
   const { data: bookings, error } = await query;
+
+  const clearSearchHref =
+    activeFilter === "all" ? "/admin" : `/admin?status=${activeFilter}`;
 
   return (
     <>
@@ -97,10 +120,75 @@ export default async function AdminBookingsPage({
             </h1>
           </div>
 
+          <form
+            action="/admin"
+            method="get"
+            className="flex items-center gap-2 mb-4"
+            style={{ maxWidth: 560 }}
+          >
+            {activeFilter !== "all" && (
+              <input type="hidden" name="status" value={activeFilter} />
+            )}
+            <div
+              className="flex items-center flex-1"
+              style={{
+                background: "var(--color-surface-deep)",
+                border: "1px solid var(--color-hairline)",
+                borderRadius: 4,
+                padding: "0 12px",
+                height: 44,
+              }}
+            >
+              <Search
+                size={14}
+                strokeWidth={1.5}
+                style={{ color: "var(--color-fg-3)", marginRight: 10 }}
+              />
+              <input
+                name="q"
+                defaultValue={rawQuery}
+                placeholder="Search by name, email, phone, vehicle, or reference"
+                aria-label="Search bookings"
+                style={{
+                  flex: 1,
+                  background: "transparent",
+                  border: 0,
+                  outline: "none",
+                  color: "var(--color-fg-1)",
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14,
+                  letterSpacing: "-0.005em",
+                  height: "100%",
+                }}
+              />
+              {rawQuery && (
+                <Link
+                  href={clearSearchHref}
+                  aria-label="Clear search"
+                  className="inline-flex items-center justify-center text-fg-3 hover:text-chrome transition-colors"
+                  style={{ padding: 4, marginLeft: 4 }}
+                >
+                  <X size={14} strokeWidth={1.5} />
+                </Link>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="btn btn--ghost"
+              style={{ height: 44 }}
+            >
+              Search
+            </button>
+          </form>
+
           <div className="flex flex-wrap gap-2 mb-8">
             {STATUS_FILTERS.map((f) => {
               const isActive = f.value === activeFilter;
-              const href = f.value === "all" ? "/admin" : `/admin?status=${f.value}`;
+              const params = new URLSearchParams();
+              if (f.value !== "all") params.set("status", f.value);
+              if (rawQuery) params.set("q", rawQuery);
+              const qs = params.toString();
+              const href = qs ? `/admin?${qs}` : "/admin";
               return (
                 <Link
                   key={f.value}
@@ -161,8 +249,21 @@ export default async function AdminBookingsPage({
               }}
             >
               <p className="m-0 text-fg-2" style={{ fontSize: 15 }}>
-                No bookings{activeFilter === "all" ? " yet" : " in this filter"}.
+                {rawQuery
+                  ? `No bookings match "${rawQuery}"${activeFilter !== "all" ? ` in ${activeFilter}` : ""}.`
+                  : activeFilter === "all"
+                  ? "No bookings yet."
+                  : "No bookings in this filter."}
               </p>
+              {rawQuery && (
+                <Link
+                  href={clearSearchHref}
+                  className="inline-flex items-center gap-1 mt-3 text-fg-2 hover:text-chrome transition-colors"
+                  style={{ fontSize: 13 }}
+                >
+                  <X size={12} strokeWidth={1.5} /> Clear search
+                </Link>
+              )}
             </div>
           )}
 
