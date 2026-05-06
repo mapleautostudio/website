@@ -123,7 +123,7 @@ function MapPlaceholder() {
             fontSize="11"
             textAnchor="middle"
           >
-            MAPLE · 331 60 ST E #10
+            MAPLE · 331 60 ST E
           </text>
         </g>
       </svg>
@@ -195,17 +195,23 @@ export function Visit() {
               <br />
               {SHOP.location.parking}
             </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-3 mt-2">
+            <div className="flex flex-col gap-3 mt-2">
               <a
                 href={`tel:${SHOP.phoneTel}`}
-                className="inline-flex items-center gap-2 text-fg-1 hover:text-chrome transition-colors"
-                style={{ fontSize: 14 }}
+                className="inline-flex items-center gap-3 hover:opacity-80 transition-opacity self-start"
+                style={{
+                  color: "var(--color-accent)",
+                  fontFamily: "var(--font-display)",
+                  fontSize: 24,
+                  fontWeight: 400,
+                  letterSpacing: "-0.02em",
+                }}
               >
-                <Phone size={14} strokeWidth={1.5} /> {SHOP.phone}
+                <Phone size={20} strokeWidth={1.5} /> {SHOP.phone}
               </a>
               <a
                 href={`mailto:${SHOP.email}`}
-                className="inline-flex items-center gap-2 text-fg-1 hover:text-chrome transition-colors break-all"
+                className="inline-flex items-center gap-2 text-fg-2 hover:text-chrome transition-colors break-all"
                 style={{ fontSize: 14 }}
               >
                 <Mail size={14} strokeWidth={1.5} /> {SHOP.email}

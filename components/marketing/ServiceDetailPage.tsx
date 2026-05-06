@@ -68,7 +68,7 @@ export function ServiceDetailPage({ service }: { service: Service }) {
                   </div>
                   <p
                     className="m-0 text-fg-2 mt-auto"
-                    style={{ fontSize: 14, lineHeight: 1.55 }}
+                    style={{ fontSize: 15, lineHeight: 1.55 }}
                   >
                     {pkg.description}
                   </p>

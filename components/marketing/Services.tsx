@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { HOMEPAGE_SERVICE_CARDS, type Service } from "@/lib/content/services";
 
@@ -14,7 +15,7 @@ function ServiceCard({ s, isFeatured }: { s: Service; isFeatured: boolean }) {
   return (
     <Link
       href={`/services/${s.slug}`}
-      className={`card card--hover relative flex flex-col gap-4 col-span-12 ${colSpanClass}`}
+      className={`card card--hover group relative flex flex-col gap-4 col-span-12 overflow-hidden ${colSpanClass}`}
       style={{
         background: isFeatured
           ? "var(--color-elevated)"
@@ -23,7 +24,34 @@ function ServiceCard({ s, isFeatured }: { s: Service; isFeatured: boolean }) {
         padding: "clamp(20px, 4vw, 28px)",
       }}
     >
-      <div className="flex items-start justify-between">
+      {s.heroImage && (
+        <>
+          <Image
+            src={s.heroImage.src}
+            alt=""
+            aria-hidden
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            style={{
+              objectFit: "cover",
+              objectPosition: s.heroImage.objectPosition ?? "center",
+            }}
+            className="opacity-[0.10] md:opacity-0 md:group-hover:opacity-[0.22] transition-opacity duration-500 ease-out pointer-events-none"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(15,20,24,0.35) 0%, rgba(15,20,24,0.0) 45%, rgba(15,20,24,0.65) 100%)",
+              opacity: 0,
+              transition: "opacity 0.5s ease-out",
+            }}
+          />
+        </>
+      )}
+
+      <div className="relative flex items-start justify-between">
         <Icon size={26} strokeWidth={1.5} className="text-chrome" />
         <span className="meta text-fg-3">
           {s.num}
@@ -35,7 +63,7 @@ function ServiceCard({ s, isFeatured }: { s: Service; isFeatured: boolean }) {
         </span>
       </div>
 
-      <div className="flex-1 flex flex-col gap-3">
+      <div className="relative flex-1 flex flex-col gap-3">
         <h3
           className="m-0 font-display"
           style={{
@@ -50,7 +78,7 @@ function ServiceCard({ s, isFeatured }: { s: Service; isFeatured: boolean }) {
         <p
           className="m-0 text-fg-2"
           style={{
-            fontSize: 14,
+            fontSize: 15,
             lineHeight: 1.55,
             maxWidth: s.span === 12 ? 600 : "none",
           }}
@@ -60,7 +88,7 @@ function ServiceCard({ s, isFeatured }: { s: Service; isFeatured: boolean }) {
       </div>
 
       <div
-        className="flex items-center justify-between pt-4 mt-auto gap-2"
+        className="relative flex items-center justify-between pt-4 mt-auto gap-2"
         style={{ borderTop: "1px solid var(--color-hairline)" }}
       >
         <span className="meta text-fg-2 truncate">{s.cardFooter.from}</span>

@@ -47,7 +47,7 @@ export const SERVICES: Service[] = [
     icon: ShieldCheck,
     cardDescription:
       "Full interior + exterior detail. Photographed before/after. Quoted by vehicle size and condition — not by guesswork.",
-    cardFooter: { from: "QUOTE BY VEHICLE", duration: "HALF DAY" },
+    cardFooter: { from: "FOUR PACKAGES", duration: "HALF DAY" },
     span: 6,
     navGroup: "main",
     hero: {
@@ -93,7 +93,7 @@ export const SERVICES: Service[] = [
     shortTitle: "Ceramic coating",
     icon: Circle,
     cardDescription: "Pro-grade ceramic, multi-stage prep. We document every panel before coating goes down.",
-    cardFooter: { from: "QUOTE BY VEHICLE", duration: "1–2 DAYS" },
+    cardFooter: { from: "LIFETIME OPTIONS", duration: "1–2 DAYS" },
     span: 6,
     navGroup: "main",
     hero: {
@@ -128,7 +128,7 @@ export const SERVICES: Service[] = [
     icon: Wrench,
     cardDescription:
       "One, two, or three-stage correction. We measure paint thickness before any compound touches it.",
-    cardFooter: { from: "QUOTE BY VEHICLE", duration: "4–8H" },
+    cardFooter: { from: "PHOTOGRAPHED", duration: "4–8H" },
     span: 4,
     navGroup: "main",
     hero: {
@@ -162,7 +162,7 @@ export const SERVICES: Service[] = [
     shortTitle: "Window tint",
     icon: Grid2x2,
     cardDescription: "Carbon and ceramic films, lifetime warranty. Cut on plotter, installed dust-free.",
-    cardFooter: { from: "QUOTE BY VEHICLE", duration: "2–3H" },
+    cardFooter: { from: "LIFETIME WARRANTY", duration: "2–3H" },
     span: 4,
     navGroup: "main",
     hero: {
@@ -197,7 +197,7 @@ export const SERVICES: Service[] = [
     icon: Sailboat,
     cardDescription:
       "Hull oxidation, gelcoat correction, and interior. Trailerable units only — we don't currently service in-water.",
-    cardFooter: { from: "QUOTE BY VEHICLE", duration: "3–5H" },
+    cardFooter: { from: "TRAILERABLE", duration: "3–5H" },
     span: 4,
     navGroup: "main",
     hero: {
@@ -228,7 +228,7 @@ export const SERVICES: Service[] = [
     icon: Briefcase,
     cardDescription:
       "Custom-fit floor mats, seat covers, dash cams, and cargo organizers — fitted in-shop or shipped.",
-    cardFooter: { from: "QUOTE BY VEHICLE", duration: "CUSTOM FIT · IN-SHOP OR SHIP" },
+    cardFooter: { from: "CUSTOM-FIT", duration: "IN-SHOP OR SHIP" },
     span: 12,
     navGroup: "more",
     hero: {
@@ -263,7 +263,7 @@ export const SERVICES: Service[] = [
     icon: Sparkles,
     cardDescription:
       "Tailored seat covers and floor mats fitted to your VIN — leather, neoprene, or all-weather.",
-    cardFooter: { from: "QUOTE BY VEHICLE", duration: "FIT BY VIN" },
+    cardFooter: { from: "FIT BY VIN", duration: "MEASURED PER VEHICLE" },
     span: 12,
     navGroup: "more",
     hero: {

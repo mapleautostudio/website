@@ -6,7 +6,7 @@ import {
   type Review,
 } from "@/lib/content/reviews";
 
-function Stars({ n = 5 }: { n?: number }) {
+function Stars({ n = 5, size = 14 }: { n?: number; size?: number }) {
   return (
     <div
       className="flex items-center gap-1"
@@ -14,27 +14,92 @@ function Stars({ n = 5 }: { n?: number }) {
       style={{ color: "var(--color-accent)" }}
     >
       {Array.from({ length: n }).map((_, i) => (
-        <Star
-          key={i}
-          size={14}
-          strokeWidth={1.5}
-          fill="currentColor"
-        />
+        <Star key={i} size={size} strokeWidth={1.5} fill="currentColor" />
       ))}
     </div>
   );
 }
 
-function ReviewMeta({ r }: { r: Review }) {
+function Avatar({ name }: { name: string }) {
+  const initials = name
+    .split(/\s+/)
+    .map((p) => p[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
   return (
-    <div className="flex flex-col gap-1">
-      <span className="text-fg-1" style={{ fontSize: 14, fontWeight: 500 }}>
-        {r.author}
-      </span>
-      <span className="meta">
-        {r.vehicle} · {r.service.toUpperCase()}
-        {r.date ? ` · ${r.date}` : ""}
-      </span>
+    <div
+      className="flex items-center justify-center font-display shrink-0"
+      style={{
+        width: 38,
+        height: 38,
+        borderRadius: "50%",
+        background: "var(--color-accent-soft)",
+        color: "var(--color-accent)",
+        fontSize: 14,
+        fontWeight: 500,
+        letterSpacing: "0.02em",
+      }}
+      aria-hidden
+    >
+      {initials}
+    </div>
+  );
+}
+
+function ReviewCard({
+  r,
+  className,
+  featured,
+}: {
+  r: Review;
+  className?: string;
+  featured?: boolean;
+}) {
+  return (
+    <div
+      className={`card flex flex-col ${className ?? ""}`}
+      style={{
+        padding: featured ? "clamp(28px, 3.5vw, 40px)" : "clamp(22px, 3vw, 28px)",
+        background: "var(--color-elevated)",
+        gap: featured ? 20 : 16,
+        minHeight: featured ? 280 : 220,
+      }}
+    >
+      <Stars n={r.stars} size={featured ? 16 : 13} />
+      <p
+        className={featured ? "m-0 text-fg-1 font-display" : "m-0 text-fg-1"}
+        style={{
+          fontSize: featured ? "clamp(20px, 2.4vw, 26px)" : 15,
+          lineHeight: featured ? 1.35 : 1.6,
+          letterSpacing: featured ? "-0.015em" : "-0.005em",
+          fontWeight: featured ? 400 : 400,
+          flex: 1,
+        }}
+      >
+        {r.body}
+      </p>
+      <div
+        className="flex items-center gap-3 pt-4 mt-auto"
+        style={{ borderTop: "1px solid var(--color-hairline)" }}
+      >
+        <Avatar name={r.author} />
+        <div className="flex flex-col">
+          <span
+            className="text-fg-1"
+            style={{ fontSize: 14, fontWeight: 500, letterSpacing: "-0.005em" }}
+          >
+            {r.author}
+          </span>
+          <span
+            className="text-fg-3"
+            style={{ fontSize: 12, lineHeight: 1.4 }}
+          >
+            {r.service}
+            {r.date ? ` · ${r.date}` : ""}
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -43,102 +108,57 @@ export function Reviews() {
   return (
     <section id="reviews" className="section">
       <div className="container-x">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 sm:gap-8 mb-12 sm:mb-16">
-          <div className="max-w-190">
-            <span className="eyebrow block mb-5">WHAT CUSTOMERS SAID</span>
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-10 lg:gap-12 mb-12 sm:mb-14">
+          <div className="max-w-150">
+            <span className="eyebrow block mb-5">GOOGLE REVIEWS</span>
             <h2
               className="m-0 font-display"
               style={{
-                fontSize: "clamp(32px, 5.5vw, 56px)",
+                fontSize: "clamp(36px, 6.5vw, 64px)",
                 fontWeight: 300,
                 letterSpacing: "-0.025em",
-                lineHeight: 1.04,
+                lineHeight: 1.02,
               }}
             >
-              <span className="text-fg-1">From the</span>{" "}
-              <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
-                service log.
+              <span className="text-fg-2">What customers</span>{" "}
+              <em
+                className="not-italic"
+                style={{ color: "var(--color-accent)", opacity: 0.95 }}
+              >
+                say.
               </em>
             </h2>
           </div>
-          <span className="meta">
-            {REVIEWS_META.count.toUpperCase()} ·{" "}
-            {REVIEWS_META.source.toUpperCase()} · VERIFIED
-          </span>
-        </div>
 
-        <div
-          className="card mb-4"
-          style={{
-            padding: "clamp(24px, 5vw, 48px)",
-            background: "var(--color-elevated)",
-          }}
-        >
-          <Stars />
-          <blockquote
-            className="m-0 mt-6 font-display text-fg-1"
-            style={{
-              fontSize: "clamp(20px, 3vw, 30px)",
-              fontWeight: 400,
-              lineHeight: 1.35,
-              letterSpacing: "-0.015em",
-              maxWidth: 920,
-            }}
-          >
-            <span className="text-fg-3">&quot;</span>
-            {HERO_REVIEW.body}
-          </blockquote>
-          <hr
-            className="my-6"
-            style={{
-              border: 0,
-              borderTop: "1px solid var(--color-hairline)",
-            }}
-          />
-          <ReviewMeta r={HERO_REVIEW} />
+          <div className="flex flex-col gap-2 items-start lg:items-end">
+            <div className="flex items-center gap-3">
+              <span
+                className="font-display text-fg-1"
+                style={{
+                  fontSize: 44,
+                  fontWeight: 300,
+                  letterSpacing: "-0.025em",
+                  lineHeight: 1,
+                }}
+              >
+                {REVIEWS_META.averageStar}
+              </span>
+              <Stars n={5} size={18} />
+            </div>
+            <span
+              className="text-fg-2"
+              style={{ fontSize: 15, lineHeight: 1.5 }}
+            >
+              Based on {REVIEWS_META.count} on Google
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {SUPPORTING_REVIEWS.map((r, i) => {
-            const span = i === 0 ? "md:col-span-5" : i === 1 ? "md:col-span-4" : "md:col-span-3";
-            const bodySize = i === 0 ? 16 : i === 1 ? 14 : 13;
-            const bodyLineClamp = i === 2 ? 3 : undefined;
-            return (
-              <div
-                key={i}
-                className={`card ${span}`}
-                style={{
-                  padding: "clamp(20px, 4vw, 28px)",
-                  background: "var(--color-elevated)",
-                }}
-              >
-                <Stars />
-                <p
-                  className="m-0 mt-4 text-fg-1"
-                  style={{
-                    fontSize: bodySize,
-                    lineHeight: 1.55,
-                    ...(bodyLineClamp && {
-                      display: "-webkit-box",
-                      WebkitLineClamp: bodyLineClamp,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                    }),
-                  }}
-                >
-                  {r.body}
-                </p>
-                <hr
-                  className="my-5"
-                  style={{
-                    border: 0,
-                    borderTop: "1px solid var(--color-hairline)",
-                  }}
-                />
-                <ReviewMeta r={r} />
-              </div>
-            );
-          })}
+          <ReviewCard r={HERO_REVIEW} className="md:col-span-7" featured />
+          <ReviewCard r={SUPPORTING_REVIEWS[1]} className="md:col-span-5" />
+          <ReviewCard r={SUPPORTING_REVIEWS[0]} className="md:col-span-6" />
+          <ReviewCard r={SUPPORTING_REVIEWS[2]} className="md:col-span-6" />
         </div>
       </div>
     </section>

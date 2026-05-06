@@ -138,7 +138,7 @@ body {
   background: var(--color-surface);
   color: var(--color-fg-1);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   line-height: var(--lh-body);
   letter-spacing: var(--tr-body);
   -webkit-font-smoothing: antialiased;
@@ -256,20 +256,20 @@ input[type="number"] {
 }
 
 .body-lg {
-  font-size: 17px;
+  font-size: 18px;
   line-height: var(--lh-loose);
   color: var(--color-fg-2);
 }
 
 .meta {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-fg-3);
   letter-spacing: 0;
 }
 
 .caption {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--color-fg-3);
 }
 

@@ -106,10 +106,16 @@ export function Footer() {
             >
               <li>{SHOP.location.line1}</li>
               <li>{SHOP.location.city}</li>
-              <li>
+              <li className="mt-1">
                 <a
                   href={`tel:${SHOP.phoneTel}`}
-                  className="hover:text-chrome transition-colors"
+                  className="text-fg-1 hover:opacity-80 transition-opacity inline-block"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: 18,
+                    fontWeight: 400,
+                    letterSpacing: "-0.015em",
+                  }}
                 >
                   {SHOP.phone}
                 </a>

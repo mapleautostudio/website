@@ -88,8 +88,13 @@ export default async function BookPage({
                     <span className="meta">PHONE</span>
                     <a
                       href={`tel:${SHOP.phoneTel}`}
-                      className="text-fg-1 hover:text-chrome transition-colors"
-                      style={{ fontSize: 14 }}
+                      className="text-fg-1 hover:opacity-80 transition-opacity"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: 18,
+                        fontWeight: 400,
+                        letterSpacing: "-0.015em",
+                      }}
                     >
                       {SHOP.phone}
                     </a>

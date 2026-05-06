@@ -94,7 +94,7 @@ export function Pillars() {
 
               <p
                 className="m-0 text-fg-2 mt-auto"
-                style={{ fontSize: 14, lineHeight: 1.6 }}
+                style={{ fontSize: 15, lineHeight: 1.6 }}
               >
                 {p.body}
               </p>
