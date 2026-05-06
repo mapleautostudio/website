@@ -122,17 +122,6 @@ export function ServiceDetailPage({ service }: { service: Service }) {
                     </h3>
                     <span className="meta">{pkg.duration.toUpperCase()}</span>
                   </div>
-                  <span
-                    className="font-display text-fg-1"
-                    style={{
-                      fontSize: 36,
-                      fontWeight: 300,
-                      letterSpacing: "-0.025em",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {pkg.price}
-                  </span>
                   <p
                     className="m-0 text-fg-2 mt-auto"
                     style={{ fontSize: 14, lineHeight: 1.55 }}

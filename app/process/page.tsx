@@ -15,7 +15,7 @@ const STEPS = [
   {
     n: "01",
     title: "Arrival.",
-    body: "Pull in by appointment, or we collect from you within Saskatoon city limits on packages over $250. Walk-around with you, key handover, baseline paint-thickness reading on every panel if correction is on the work order.",
+    body: "Pull in by appointment, or ask about pickup and dropoff within Saskatoon city limits when you book. Walk-around with you, key handover, baseline paint-thickness reading on every panel if correction is on the work order.",
     note: "BY APPOINTMENT OR PICKUP",
   },
   {

@@ -25,7 +25,7 @@ export type Service = {
     headline: string;
     sub: string;
   };
-  packages?: Array<{ name: string; price: string; duration: string; description: string }>;
+  packages?: Array<{ name: string; duration: string; description: string }>;
   details?: string[];
   faq: Array<{ q: string; a: string }>;
 };
@@ -39,7 +39,7 @@ export const SERVICES: Service[] = [
     icon: ShieldCheck,
     cardDescription:
       "Full interior + exterior detail. Photographed before/after. Quoted by vehicle size and condition — not by guesswork.",
-    cardFooter: { from: "FROM $129", duration: "HALF DAY" },
+    cardFooter: { from: "QUOTE BY VEHICLE", duration: "HALF DAY" },
     span: 6,
     navGroup: "main",
     hero: {
@@ -50,25 +50,21 @@ export const SERVICES: Service[] = [
     packages: [
       {
         name: "Express",
-        price: "$129",
         duration: "2h",
         description: "Wash, decon, vacuum, interior wipe-down. Daily-driver upkeep.",
       },
       {
         name: "Full",
-        price: "$279",
         duration: "Half day",
         description: "Express plus clay bar, leather conditioning, sealant, wheel-well dressing.",
       },
       {
         name: "Premium",
-        price: "$549",
         duration: "Full day",
         description: "Full plus single-stage paint correction, engine bay detail, glass treatment.",
       },
       {
         name: "Concours",
-        price: "$1,299",
         duration: "1–2 days",
         description: "Multi-stage correction, full ceramic prep, every panel photographed.",
       },
@@ -76,7 +72,7 @@ export const SERVICES: Service[] = [
     faq: [
       { q: "How long does a full detail last?", a: "Three to four months for a Full, six to nine for Premium, twelve-plus for Concours with ceramic." },
       { q: "What's the difference between detail and correction?", a: "Detail removes dirt and contaminants. Correction removes scratches and swirl marks from the clear coat." },
-      { q: "Do you do mobile?", a: "Yes — pickup and dropoff included on packages over $250 within Saskatoon city limits." },
+      { q: "Do you do mobile?", a: "Yes — pickup and dropoff available within Saskatoon city limits on most packages. Ask when booking and we'll quote it." },
     ],
   },
   {
@@ -86,7 +82,7 @@ export const SERVICES: Service[] = [
     shortTitle: "Ceramic coating",
     icon: Circle,
     cardDescription: "Pro-grade ceramic, multi-stage prep. We document every panel before coating goes down.",
-    cardFooter: { from: "FROM $899", duration: "1–2 DAYS" },
+    cardFooter: { from: "QUOTE BY VEHICLE", duration: "1–2 DAYS" },
     span: 6,
     navGroup: "main",
     hero: {
@@ -114,7 +110,7 @@ export const SERVICES: Service[] = [
     icon: Wrench,
     cardDescription:
       "One, two, or three-stage correction. We measure paint thickness before any compound touches it.",
-    cardFooter: { from: "FROM $499", duration: "4–8H" },
+    cardFooter: { from: "QUOTE BY VEHICLE", duration: "4–8H" },
     span: 4,
     navGroup: "main",
     hero: {
@@ -141,7 +137,7 @@ export const SERVICES: Service[] = [
     shortTitle: "Window tint",
     icon: Grid2x2,
     cardDescription: "Carbon and ceramic films, lifetime warranty. Cut on plotter, installed dust-free.",
-    cardFooter: { from: "FROM $239", duration: "2–3H" },
+    cardFooter: { from: "QUOTE BY VEHICLE", duration: "2–3H" },
     span: 4,
     navGroup: "main",
     hero: {
@@ -169,7 +165,7 @@ export const SERVICES: Service[] = [
     icon: Sailboat,
     cardDescription:
       "Hull oxidation, gelcoat correction, and interior. Trailerable units only — we don't currently service in-water.",
-    cardFooter: { from: "FROM $399", duration: "3–5H" },
+    cardFooter: { from: "QUOTE BY VEHICLE", duration: "3–5H" },
     span: 4,
     navGroup: "main",
     hero: {
