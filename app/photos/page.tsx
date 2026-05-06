@@ -3,38 +3,70 @@ import { ArrowLeft, Camera } from "lucide-react";
 import { Nav } from "@/components/marketing/Nav";
 import { Footer } from "@/components/marketing/Footer";
 import { CtaBand } from "@/components/marketing/CtaBand";
+import { PhotoTile } from "@/components/marketing/PhotoTile";
 
 export const metadata = {
   title: "Photos — Maple Auto Studio",
   description:
-    "Before / after photographs from recent jobs at Maple Auto Studio.",
+    "Photographs of recent work at Maple Auto Studio — detailing, ceramic coating, paint correction, tint, and accessories.",
 };
 
-const PLACEHOLDER_TILES = Array.from({ length: 9 }).map((_, i) => ({
-  id: i,
-  caption: [
-    "2-stage + ceramic",
-    "Full interior",
-    "Ceramic tint",
-    "Boat gelcoat",
-    "Window tint",
-    "Paint correction",
-    "Custom mats",
-    "Engine bay detail",
-    "Concours detail",
-  ][i],
-  vehicle: [
-    "2019 Audi Q5",
-    "2017 Lexus IS",
-    "2024 Tesla Model 3",
-    "2018 Sea Ray 240",
-    "2022 BMW M3",
-    "2016 Porsche Cayman",
-    "2016 Subaru Outback",
-    "2020 Mercedes E450",
-    "2014 Porsche 911",
-  ][i],
-}));
+const TILES = {
+  paintCorrection: {
+    src: "/photos/paint-correction/hero.jpg",
+    alt: "Paint correction in progress on a polished panel under shop lights.",
+    tag: "PAINT CORRECTION",
+    caption: "Two-stage compound + polish, panel by panel.",
+  },
+  ceramic: {
+    src: "/photos/ceramic-coating/hero.jpg",
+    alt: "Ceramic coating applied to a darkened panel showing deep reflection.",
+    tag: "CERAMIC COATING",
+    caption: "Pro-grade ceramic, applied by hand.",
+  },
+  tint: {
+    src: "/photos/window-tint/hero.webp",
+    alt: "Window tint film shade comparison strip across glass panels.",
+    tag: "WINDOW TINT",
+    caption: "Carbon and ceramic film, shade strip on the bay glass.",
+  },
+  dashCam: {
+    src: "/photos/accessories/dash-cam.jpg",
+    alt: "Dash cam install with cabling tucked clean behind the trim.",
+    tag: "DASH CAM",
+    caption: "Hardwire kit, no zip ties, no exposed wire.",
+  },
+  floorMats: {
+    src: "/photos/accessories/floor-mats.jpg",
+    alt: "Custom-fit weather floor mats laid in a vehicle interior.",
+    tag: "FLOOR MATS",
+    caption: "Custom-fit, weather-rated, fitted by VIN.",
+  },
+  seatCoverPortrait: {
+    src: "/photos/seat-covers/hero.jpg",
+    alt: "Tailored seat cover detail showing stitching and fitment.",
+    tag: "SEAT COVERS",
+    caption: "Tailored cover, stitching matched to interior.",
+  },
+  supplies: {
+    src: "/photos/accessories/supplies.jpg",
+    alt: "Detailing supplies and accessories laid out on a workbench.",
+    tag: "DETAILING KIT",
+    caption: "Workbench, every product in its place.",
+  },
+  microfiber: {
+    src: "/photos/accessories/microfiber.jpg",
+    alt: "Microfiber towels stacked on a workbench, color-coded.",
+    tag: "MICROFIBER",
+    caption: "Color-coded towels — paint, glass, interior.",
+  },
+  seatCoverWide: {
+    src: "/photos/accessories/seat-covers-1.jpg",
+    alt: "Custom upholstery photographed inside a vehicle cabin.",
+    tag: "UPHOLSTERY",
+    caption: "Custom upholstery, photographed before pickup.",
+  },
+};
 
 export default function PhotosPage() {
   return (
@@ -69,7 +101,7 @@ export default function PhotosPage() {
                 <span className="text-fg-1">service log.</span>
               </h1>
               <p className="m-0 body-lg" style={{ maxWidth: 640 }}>
-                Photographs of recent work. Before and after on every job, taken on a calibrated phone in the same bay.
+                A working set. Recent jobs across detailing, ceramic, correction, tint, and accessories. More added as the studio photographs new work.
               </p>
             </div>
           </div>
@@ -77,62 +109,74 @@ export default function PhotosPage() {
 
         <section style={{ paddingBottom: 96 }}>
           <div className="container-x">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {PLACEHOLDER_TILES.map((tile) => (
-                <figure
-                  key={tile.id}
-                  className="card relative overflow-hidden m-0"
-                  style={{
-                    aspectRatio: "4 / 5",
-                    padding: 0,
-                    background: "var(--color-surface-deep)",
-                    cursor: "pointer",
-                  }}
-                >
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: `
-                        radial-gradient(120% 70% at 30% 30%, rgba(192,197,204,0.05) 0%, transparent 60%),
-                        linear-gradient(180deg, #1a2027 0%, #0a0e11 100%)
-                      `,
-                    }}
-                  />
-                  <div className="absolute inset-0 flex flex-col justify-between p-5">
-                    <div className="flex items-start justify-between">
-                      <Camera
-                        size={18}
-                        strokeWidth={1.5}
-                        className="text-chrome opacity-60"
-                      />
-                      <span className="meta">
-                        {String(tile.id + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <figcaption className="flex flex-col gap-1">
-                      <span
-                        className="text-fg-1"
-                        style={{
-                          fontSize: 15,
-                          fontWeight: 500,
-                          letterSpacing: "-0.01em",
-                        }}
-                      >
-                        {tile.caption}
-                      </span>
-                      <span className="meta">{tile.vehicle.toUpperCase()}</span>
-                    </figcaption>
-                  </div>
-                </figure>
-              ))}
-            </div>
+            <div className="flex flex-col gap-3 md:gap-4">
+              {/* Row 1 — featured pair: hero landscape + tall portrait */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 md:gap-4">
+                <PhotoTile
+                  {...TILES.paintCorrection}
+                  className="lg:col-span-7"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  priority
+                  style={{ height: "clamp(280px, 42vw, 540px)" }}
+                />
+                <PhotoTile
+                  {...TILES.ceramic}
+                  className="lg:col-span-5"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  style={{ height: "clamp(360px, 42vw, 540px)" }}
+                />
+              </div>
 
-            <p
-              className="mt-8 text-fg-3 text-center"
-              style={{ fontSize: 13, lineHeight: 1.6 }}
-            >
-              Placeholder grid — real before/after photographs will replace these tiles before launch.
-            </p>
+              {/* Row 2 — wide divider banner */}
+              <PhotoTile
+                {...TILES.tint}
+                sizes="100vw"
+                style={{ height: "clamp(180px, 22vw, 320px)" }}
+              />
+
+              {/* Row 3 — triple portraits */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                <PhotoTile
+                  {...TILES.dashCam}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ height: "clamp(360px, 32vw, 480px)" }}
+                />
+                <PhotoTile
+                  {...TILES.floorMats}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  style={{ height: "clamp(360px, 32vw, 480px)" }}
+                />
+                <PhotoTile
+                  {...TILES.seatCoverPortrait}
+                  className="sm:col-span-2 lg:col-span-1"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 33vw"
+                  style={{ height: "clamp(360px, 32vw, 480px)" }}
+                />
+              </div>
+
+              {/* Row 4 — landscape pair */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 md:gap-4">
+                <PhotoTile
+                  {...TILES.supplies}
+                  className="lg:col-span-7"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  style={{ height: "clamp(220px, 26vw, 380px)" }}
+                />
+                <PhotoTile
+                  {...TILES.microfiber}
+                  className="lg:col-span-5"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  style={{ height: "clamp(220px, 26vw, 380px)" }}
+                />
+              </div>
+
+              {/* Row 5 — full-width landscape finisher */}
+              <PhotoTile
+                {...TILES.seatCoverWide}
+                sizes="100vw"
+                style={{ height: "clamp(240px, 30vw, 440px)" }}
+              />
+            </div>
           </div>
         </section>
       </main>

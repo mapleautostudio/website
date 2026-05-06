@@ -1,73 +1,17 @@
-import Link from "next/link";
-import { ArrowRight, ArrowLeft, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { type Service } from "@/lib/content/services";
-import { BOOKING_HREF } from "@/lib/content/contact";
+import { ServiceHero } from "./ServiceHero";
 
 export function ServiceDetailPage({ service }: { service: Service }) {
-  const Icon = service.icon;
-  const headline = service.hero.headline;
-  const commaIdx = headline.indexOf(",");
-  const headlineFirst = commaIdx >= 0 ? headline.slice(0, commaIdx + 1) : headline;
-  const headlineSecond = commaIdx >= 0 ? headline.slice(commaIdx + 1).trim() : null;
-
+  const { icon: Icon, ...serviceData } = service;
   return (
     <main>
-      <section
-        className="relative overflow-hidden"
-        style={{ paddingTop: 144, paddingBottom: 96 }}
-      >
-        <div className="container-x">
-          <Link
-            href="/#services"
-            className="inline-flex items-center gap-2 text-fg-2 hover:text-chrome transition-colors mb-12"
-            style={{ fontSize: 13 }}
-          >
-            <ArrowLeft size={14} strokeWidth={1.5} /> All services
-          </Link>
-
-          <div className="max-w-230 flex flex-col gap-8">
-            <div className="flex items-center gap-4">
-              <Icon size={28} strokeWidth={1.5} className="text-chrome" />
-              <span className="eyebrow">{service.hero.eyebrow}</span>
-            </div>
-            <h1
-              className="m-0 font-display"
-              style={{
-                fontSize: "clamp(48px, 7vw, 88px)",
-                fontWeight: 300,
-                letterSpacing: "-0.03em",
-                lineHeight: 0.98,
-              }}
-            >
-              {headlineSecond ? (
-                <>
-                  <span className="text-fg-1">{headlineFirst}</span>{" "}
-                  <em style={{ color: "var(--color-accent)", opacity: 0.9 }}>
-                    {headlineSecond}
-                  </em>
-                </>
-              ) : (
-                <span className="text-fg-1">{headlineFirst}</span>
-              )}
-            </h1>
-            <p className="m-0 body-lg" style={{ maxWidth: 640 }}>
-              {service.hero.sub}
-            </p>
-            <div className="flex flex-wrap gap-3 mt-4">
-              <Link
-                href={`${BOOKING_HREF}?service=${service.slug}`}
-                className="btn btn--primary"
-              >
-                Book {service.shortTitle.toLowerCase()}
-                <ArrowRight size={16} strokeWidth={1.5} />
-              </Link>
-              <Link href="/#services" className="btn btn--ghost">
-                Other services
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceHero
+        service={serviceData}
+        iconNode={
+          <Icon size={28} strokeWidth={1.5} className="text-chrome" />
+        }
+      />
 
       {service.packages && service.packages.length > 0 && (
         <section

@@ -25,6 +25,14 @@ export type Service = {
     headline: string;
     sub: string;
   };
+  heroImage?: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    objectPosition?: string;
+  };
+  heroPlaceholder?: { meta: string[] };
   packages?: Array<{ name: string; duration: string; description: string }>;
   details?: string[];
   faq: Array<{ q: string; a: string }>;
@@ -46,6 +54,9 @@ export const SERVICES: Service[] = [
       eyebrow: "DETAILING · 4 PACKAGES",
       headline: "Detailing, by package.",
       sub: "Choose the level of correction. We document every step on a per-vehicle work order, photographed before and after.",
+    },
+    heroPlaceholder: {
+      meta: ["4 PACKAGES", "HALF DAY TO MULTI-DAY", "QUOTED BY VEHICLE"],
     },
     packages: [
       {
@@ -90,6 +101,13 @@ export const SERVICES: Service[] = [
       headline: "Ceramic, by hand.",
       sub: "Pro-grade coatings applied panel by panel after multi-stage prep. Manufacturer-warranted up to lifetime.",
     },
+    heroImage: {
+      src: "/photos/ceramic-coating/hero.jpg",
+      width: 2768,
+      height: 4160,
+      alt: "Ceramic coating applied to a darkened panel showing deep reflection.",
+      objectPosition: "center",
+    },
     details: [
       "Two-bucket wash, iron decon, clay bar, IPA wipe-down before any coating.",
       "Multi-stage paint correction included on Premium and above.",
@@ -118,6 +136,13 @@ export const SERVICES: Service[] = [
       headline: "Correction, on the record.",
       sub: "Single, two, or three-stage compound and polish. Paint thickness measured before any pad touches the panel.",
     },
+    heroImage: {
+      src: "/photos/paint-correction/hero.jpg",
+      width: 4928,
+      height: 3264,
+      alt: "Paint correction in progress on a polished panel under shop lights.",
+      objectPosition: "center",
+    },
     details: [
       "Paint thickness gauge readings recorded per panel before correction starts.",
       "Single stage: removes light marring. Two stage: swirl marks. Three stage: deeper scratches.",
@@ -144,6 +169,13 @@ export const SERVICES: Service[] = [
       eyebrow: "TINT · LIFETIME WARRANTY",
       headline: "Tint, dust-free.",
       sub: "Carbon and ceramic films cut on a computer plotter and installed in a sealed bay. No bubbles. No purple.",
+    },
+    heroImage: {
+      src: "/photos/window-tint/hero.webp",
+      width: 1597,
+      height: 816,
+      alt: "Window tint film shade comparison strip across glass panels.",
+      objectPosition: "center",
     },
     details: [
       "Computer-cut on plotter — no blade on glass.",
@@ -173,6 +205,9 @@ export const SERVICES: Service[] = [
       headline: "Boat detailing, trailerable.",
       sub: "Hull oxidation, gelcoat correction, vinyl interior cleaning. Drop the trailer, pick up the boat photographed start to finish.",
     },
+    heroPlaceholder: {
+      meta: ["TRAILERABLE", "UP TO 24 FEET", "GELCOAT + INTERIOR"],
+    },
     details: [
       "Wash, decon, and oxidation removal on hull.",
       "Gelcoat compound and polish — single or two-stage.",
@@ -201,6 +236,13 @@ export const SERVICES: Service[] = [
       headline: "Accessories, fitted right.",
       sub: "Weather mats, seat covers, dash cams, and cargo organizers — fitted in-shop with cabling tucked clean, or shipped to your door.",
     },
+    heroImage: {
+      src: "/photos/accessories/supplies.jpg",
+      width: 5419,
+      height: 3613,
+      alt: "Detailing supplies and accessories laid out on a workbench.",
+      objectPosition: "center",
+    },
     details: [
       "WeatherTech, Husky, and OEM floor mat options.",
       "Leather and neoprene seat covers — measured and quoted by VIN.",
@@ -228,6 +270,13 @@ export const SERVICES: Service[] = [
       eyebrow: "COVERS & MATS · FIT BY VIN",
       headline: "Covers, fit by VIN.",
       sub: "Leather, neoprene, or all-weather covers and mats — measured against your VIN, fitted in-shop, photographed before pickup.",
+    },
+    heroImage: {
+      src: "/photos/seat-covers/hero.jpg",
+      width: 4480,
+      height: 6720,
+      alt: "Tailored seat cover detail showing stitching and fitment.",
+      objectPosition: "center",
     },
     details: [
       "Custom seat covers in leather, neoprene, ballistic nylon — front, rear, third-row.",
