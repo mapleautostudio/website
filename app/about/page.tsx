@@ -9,6 +9,23 @@ export const metadata = {
   title: "About — Maple Auto Studio",
   description:
     "An independent detailing shop. Documented work, photographed evidence, written quotes — and the same technician on your car from start to finish.",
+  openGraph: {
+    title: "About — Maple Auto Studio",
+    description:
+      "An independent detailing shop. Documented work, photographed evidence, written quotes — and the same technician on your car from start to finish.",
+    url: "https://mapleautostudio.ca/about",
+    siteName: "Maple Auto Studio",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Maple Auto Studio" }],
+    locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — Maple Auto Studio",
+    description:
+      "An independent detailing shop. Documented work, photographed evidence, written quotes — and the same technician on your car from start to finish.",
+    images: ["/opengraph-image"],
+  },
 };
 
 const SECTIONS = [

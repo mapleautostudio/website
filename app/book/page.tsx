@@ -9,6 +9,23 @@ export const metadata = {
   title: "Book service — Maple Auto Studio",
   description:
     "Request a booking with Maple Auto Studio. We confirm by phone or email within the hour.",
+  openGraph: {
+    title: "Book service — Maple Auto Studio",
+    description:
+      "Request a booking with Maple Auto Studio. We confirm by phone or email within the hour.",
+    url: "https://mapleautostudio.ca/book",
+    siteName: "Maple Auto Studio",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Maple Auto Studio" }],
+    locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Book service — Maple Auto Studio",
+    description:
+      "Request a booking with Maple Auto Studio. We confirm by phone or email within the hour.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default async function BookPage({

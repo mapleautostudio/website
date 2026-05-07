@@ -9,6 +9,23 @@ export const metadata = {
   title: "Photos — Maple Auto Studio",
   description:
     "Photographs of recent work at Maple Auto Studio — detailing, ceramic coating, paint correction, tint, and accessories.",
+  openGraph: {
+    title: "Photos — Maple Auto Studio",
+    description:
+      "Photographs of recent work at Maple Auto Studio — detailing, ceramic coating, paint correction, tint, and accessories.",
+    url: "https://mapleautostudio.ca/photos",
+    siteName: "Maple Auto Studio",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Maple Auto Studio" }],
+    locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Photos — Maple Auto Studio",
+    description:
+      "Photographs of recent work at Maple Auto Studio — detailing, ceramic coating, paint correction, tint, and accessories.",
+    images: ["/opengraph-image"],
+  },
 };
 
 const TILES = {

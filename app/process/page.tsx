@@ -9,6 +9,23 @@ export const metadata = {
   title: "Process — Maple Auto Studio",
   description:
     "How a detailing job runs at Maple — drop-off, photographed inspection, written quote, phased work, second-tech QC, delivery with care guide.",
+  openGraph: {
+    title: "Process — Maple Auto Studio",
+    description:
+      "How a detailing job runs at Maple — drop-off, photographed inspection, written quote, phased work, second-tech QC, delivery with care guide.",
+    url: "https://mapleautostudio.ca/process",
+    siteName: "Maple Auto Studio",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Maple Auto Studio" }],
+    locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Process — Maple Auto Studio",
+    description:
+      "How a detailing job runs at Maple — drop-off, photographed inspection, written quote, phased work, second-tech QC, delivery with care guide.",
+    images: ["/opengraph-image"],
+  },
 };
 
 const STEPS = [
