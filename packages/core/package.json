@@ -1,0 +1,23 @@
+{
+  "name": "@maple/core",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./supabase/types": "./src/supabase/types.ts",
+    "./supabase/client": "./src/supabase/client.ts",
+    "./content/contact": "./src/content/contact.ts",
+    "./content/service-slugs": "./src/content/service-slugs.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5",
+    "vitest": "^3.0.0"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  }
+}
