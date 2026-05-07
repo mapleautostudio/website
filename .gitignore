@@ -4,7 +4,6 @@
 /node_modules
 
 # next.js
-/.next/
 /apps/web/.next/
 /apps/web/out/
 
@@ -34,3 +33,6 @@ yarn-error.log*
 
 # brainstorming visual companion
 .superpowers
+
+# local planning assets
+photos/
