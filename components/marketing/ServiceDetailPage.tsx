@@ -152,25 +152,41 @@ export function ServiceDetailPage({ service }: { service: Service }) {
                 {service.faq.map((item, i) => (
                   <div
                     key={i}
-                    className="py-6"
+                    className="flex gap-6 py-6"
                     style={{ borderBottom: "1px solid var(--color-hairline)" }}
                   >
-                    <h3
-                      className="m-0 font-body text-fg-1"
+                    <span
+                      className="shrink-0"
                       style={{
-                        fontSize: 18,
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 11,
                         fontWeight: 500,
-                        letterSpacing: "-0.01em",
+                        letterSpacing: "0.1em",
+                        color: "var(--color-fg-3)",
+                        paddingTop: 3,
+                        minWidth: 24,
                       }}
                     >
-                      {item.q}
-                    </h3>
-                    <p
-                      className="m-0 mt-3 text-fg-2"
-                      style={{ fontSize: 15, lineHeight: 1.6 }}
-                    >
-                      {item.a}
-                    </p>
+                      Q{i + 1}
+                    </span>
+                    <div>
+                      <h3
+                        className="m-0 font-body text-fg-1"
+                        style={{
+                          fontSize: 18,
+                          fontWeight: 500,
+                          letterSpacing: "-0.01em",
+                        }}
+                      >
+                        {item.q}
+                      </h3>
+                      <p
+                        className="m-0 mt-3 text-fg-2"
+                        style={{ fontSize: 15, lineHeight: 1.6 }}
+                      >
+                        {item.a}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>

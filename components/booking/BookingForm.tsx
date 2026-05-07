@@ -42,12 +42,10 @@ const textareaStyle: React.CSSProperties = {
 };
 
 const labelStyle: React.CSSProperties = {
-  fontFamily: "var(--font-mono)",
-  fontSize: 11,
+  fontFamily: "var(--font-body)",
+  fontSize: 12,
   fontWeight: 500,
-  textTransform: "uppercase",
-  letterSpacing: "0.16em",
-  color: "var(--color-fg-3)",
+  color: "var(--color-fg-2)",
 };
 
 const errorStyle: React.CSSProperties = {

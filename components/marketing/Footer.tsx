@@ -15,7 +15,7 @@ export function Footer() {
         style={{ paddingTop: 96, paddingBottom: 48 }}
       >
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12 lg:gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 lg:gap-12"
           style={{ marginBottom: 96 }}
         >
           <div className="sm:col-span-2 lg:col-span-1">
@@ -58,7 +58,7 @@ export function Footer() {
           </div>
 
           <div>
-            <span className="eyebrow block mb-5">SERVICES</span>
+            <span className="eyebrow eyebrow--muted block mb-5">SERVICES</span>
             <ul className="list-none m-0 p-0 flex flex-col gap-3">
               {SERVICES.map((s) => (
                 <li key={s.slug}>
@@ -77,7 +77,7 @@ export function Footer() {
           </div>
 
           <div>
-            <span className="eyebrow block mb-5">FOLLOW</span>
+            <span className="eyebrow eyebrow--muted block mb-5">FOLLOW</span>
             <ul className="list-none m-0 p-0 flex flex-col gap-3">
               {SHOP.social.map((s) => (
                 <li key={s.platform} className="flex flex-col">

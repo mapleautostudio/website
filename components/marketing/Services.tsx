@@ -12,16 +12,18 @@ function ServiceCard({ s, isFeatured }: { s: Service; isFeatured: boolean }) {
       ? "md:col-span-6"
       : "md:col-span-4";
 
+  const isWide = s.span === 12;
+
   return (
     <Link
       href={`/services/${s.slug}`}
-      className={`card card--hover group relative flex flex-col gap-4 col-span-12 overflow-hidden ${colSpanClass}`}
+      className={`card card--hover group relative col-span-12 overflow-hidden ${colSpanClass} ${isWide ? "flex flex-col md:flex-row md:items-stretch" : "flex flex-col gap-4"}`}
       style={{
         background: isFeatured
           ? "var(--color-elevated)"
           : "var(--color-surface-deep)",
         minHeight: 240,
-        padding: "clamp(20px, 4vw, 28px)",
+        padding: isWide ? 0 : "clamp(20px, 4vw, 28px)",
       }}
     >
       {s.heroImage && (
@@ -51,52 +53,106 @@ function ServiceCard({ s, isFeatured }: { s: Service; isFeatured: boolean }) {
         </>
       )}
 
-      <div className="relative flex items-start justify-between">
-        <Icon size={26} strokeWidth={1.5} className="text-chrome" />
-        <span className="meta text-fg-3">
-          {s.num}
-          {isFeatured && (
-            <span className="ml-2" style={{ color: "var(--color-fg-2)" }}>
-              · FEATURED
+      {isWide ? (
+        <>
+          {/* Left: icon + headline */}
+          <div
+            className="relative flex flex-col justify-between gap-4"
+            style={{ padding: "clamp(20px, 4vw, 28px)", flex: "0 0 auto", width: "clamp(220px, 28%, 320px)" }}
+          >
+            <div className="flex items-start justify-between">
+              <Icon size={26} strokeWidth={1.5} className="text-chrome" />
+              <span className="meta text-fg-3">
+                {s.num}
+                {isFeatured && (
+                  <span className="ml-2" style={{ color: "var(--color-fg-2)" }}>
+                    · FEATURED
+                  </span>
+                )}
+              </span>
+            </div>
+            <h3
+              className="m-0 font-display"
+              style={{
+                fontSize: "clamp(22px, 3vw, 30px)",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+                lineHeight: 1.05,
+              }}
+            >
+              {s.title}
+            </h3>
+          </div>
+
+          {/* Middle: body */}
+          <div
+            className="relative flex flex-col justify-center"
+            style={{
+              padding: "clamp(20px, 4vw, 28px)",
+              flex: 1,
+              borderLeft: "1px solid var(--color-hairline)",
+              borderRight: "1px solid var(--color-hairline)",
+            }}
+          >
+            <p
+              className="m-0 text-fg-2"
+              style={{ fontSize: 15, lineHeight: 1.6, maxWidth: 520 }}
+            >
+              {s.cardDescription}
+            </p>
+          </div>
+
+          {/* Right: footer */}
+          <div
+            className="relative flex flex-col justify-end gap-3"
+            style={{ padding: "clamp(20px, 4vw, 28px)", flex: "0 0 auto", width: "clamp(160px, 18%, 220px)" }}
+          >
+            <span className="meta text-fg-2">{s.cardFooter.from}</span>
+            <span className="meta inline-flex items-center gap-2 text-fg-2">
+              {s.cardFooter.duration}
+              <ArrowRight size={12} strokeWidth={1.5} />
             </span>
-          )}
-        </span>
-      </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="relative flex items-start justify-between">
+            <Icon size={26} strokeWidth={1.5} className="text-chrome" />
+            <span className="meta text-fg-3">{s.num}</span>
+          </div>
 
-      <div className="relative flex-1 flex flex-col gap-3">
-        <h3
-          className="m-0 font-display"
-          style={{
-            fontSize: "clamp(22px, 4vw, 28px)",
-            fontWeight: 400,
-            letterSpacing: "-0.02em",
-            lineHeight: 1.05,
-          }}
-        >
-          {s.title}
-        </h3>
-        <p
-          className="m-0 text-fg-2"
-          style={{
-            fontSize: 15,
-            lineHeight: 1.55,
-            maxWidth: s.span === 12 ? 600 : "none",
-          }}
-        >
-          {s.cardDescription}
-        </p>
-      </div>
+          <div className="relative flex-1 flex flex-col gap-3">
+            <h3
+              className="m-0 font-display"
+              style={{
+                fontSize: "clamp(22px, 4vw, 28px)",
+                fontWeight: 400,
+                letterSpacing: "-0.02em",
+                lineHeight: 1.05,
+              }}
+            >
+              {s.title}
+            </h3>
+            <p
+              className="m-0 text-fg-2"
+              style={{ fontSize: 15, lineHeight: 1.55 }}
+            >
+              {s.cardDescription}
+            </p>
+          </div>
 
-      <div
-        className="relative flex items-center justify-between pt-4 mt-auto gap-2"
-        style={{ borderTop: "1px solid var(--color-hairline)" }}
-      >
-        <span className="meta text-fg-2 truncate">{s.cardFooter.from}</span>
-        <span className="meta inline-flex items-center gap-2 text-fg-2 shrink-0">
-          {s.cardFooter.duration}
-          <ArrowRight size={12} strokeWidth={1.5} />
-        </span>
-      </div>
+          <div
+            className="relative flex items-center justify-between pt-4 mt-auto gap-2"
+            style={{ borderTop: "1px solid var(--color-hairline)" }}
+          >
+            <span className="meta text-fg-2 truncate">{s.cardFooter.from}</span>
+            <span className="meta inline-flex items-center gap-2 text-fg-2 shrink-0">
+              {s.cardFooter.duration}
+              <ArrowRight size={12} strokeWidth={1.5} />
+            </span>
+          </div>
+        </>
+      )}
     </Link>
   );
 }

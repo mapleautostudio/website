@@ -4,6 +4,8 @@ import { requireAdmin } from "@/lib/admin/guard";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 import { AdminHeader } from "@/components/admin/AdminHeader";
 import { StatusBadge } from "@/components/admin/StatusBadge";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { ErrorState } from "@/components/ui/ErrorState";
 import { SERVICES_BY_SLUG } from "@/lib/content/services";
 import type { BookingRow, BookingStatus } from "@/lib/supabase/types";
 
@@ -196,11 +198,11 @@ export default async function AdminBookingsPage({
                   className="inline-flex items-center transition-colors"
                   style={{
                     padding: "8px 14px",
-                    borderRadius: 4,
-                    border: "1px solid",
-                    borderColor: isActive
-                      ? "var(--color-accent)"
-                      : "var(--color-hairline)",
+                    borderRadius: 2,
+                    border: "none",
+                    borderBottom: isActive
+                      ? "1px solid var(--color-accent)"
+                      : "1px solid transparent",
                     background: isActive
                       ? "var(--color-accent-soft)"
                       : "transparent",
@@ -218,53 +220,32 @@ export default async function AdminBookingsPage({
           </div>
 
           {error && (
-            <div
-              role="alert"
-              className="flex items-start gap-3 mb-8"
-              style={{
-                padding: 16,
-                border: "1px solid var(--color-danger)",
-                borderRadius: 6,
-                background: "rgba(201, 127, 127, 0.08)",
-              }}
-            >
-              <AlertCircle
-                size={18}
-                strokeWidth={1.5}
-                style={{ color: "var(--color-danger)", marginTop: 2 }}
-              />
-              <span style={{ fontSize: 14, color: "var(--color-fg-1)" }}>
-                Couldn&apos;t load bookings: {error.message}
-              </span>
+            <div className="mb-8">
+              <ErrorState message={`Couldn't load bookings: ${error.message}`} />
             </div>
           )}
 
           {!error && (!bookings || bookings.length === 0) && (
-            <div
-              className="text-center"
-              style={{
-                padding: "64px 24px",
-                border: "1px dashed var(--color-hairline)",
-                borderRadius: 6,
-              }}
-            >
-              <p className="m-0 text-fg-2" style={{ fontSize: 15 }}>
-                {rawQuery
+            <EmptyState
+              title={
+                rawQuery
                   ? `No bookings match "${rawQuery}"${activeFilter !== "all" ? ` in ${activeFilter}` : ""}.`
                   : activeFilter === "all"
                   ? "No bookings yet."
-                  : "No bookings in this filter."}
-              </p>
-              {rawQuery && (
-                <Link
-                  href={clearSearchHref}
-                  className="inline-flex items-center gap-1 mt-3 text-fg-2 hover:text-chrome transition-colors"
-                  style={{ fontSize: 13 }}
-                >
-                  <X size={12} strokeWidth={1.5} /> Clear search
-                </Link>
-              )}
-            </div>
+                  : "No bookings in this filter."
+              }
+              action={
+                rawQuery ? (
+                  <Link
+                    href={clearSearchHref}
+                    className="inline-flex items-center gap-1 text-fg-2 hover:text-chrome transition-colors"
+                    style={{ fontSize: 13 }}
+                  >
+                    <X size={12} strokeWidth={1.5} /> Clear search
+                  </Link>
+                ) : undefined
+              }
+            />
           )}
 
           {bookings && bookings.length > 0 && (

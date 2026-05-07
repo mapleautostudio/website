@@ -177,7 +177,7 @@ export function Nav() {
               <Phone size={14} strokeWidth={1.5} />
               <span>{SHOP.phone}</span>
             </a>
-            <Link href={BOOKING_HREF} className="btn btn--primary btn--sm">
+            <Link href={BOOKING_HREF} className="btn btn--primary">
               Book service
             </Link>
           </div>

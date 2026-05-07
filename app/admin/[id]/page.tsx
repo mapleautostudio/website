@@ -159,7 +159,18 @@ export default async function AdminBookingDetailPage({
               >
                 <span className="text-fg-1">{b.contact_name}</span>
                 {" — "}
-                <span className="text-fg-2">{serviceLabel.toLowerCase()}</span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "clamp(14px, 1.5vw, 18px)",
+                    fontWeight: 500,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--color-fg-3)",
+                  }}
+                >
+                  {serviceLabel}
+                </span>
               </h1>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -298,9 +309,8 @@ export default async function AdminBookingDetailPage({
                   className="m-0 mt-4 text-fg-3"
                   style={{ fontSize: 12, lineHeight: 1.5 }}
                 >
-                  Status updates apply immediately. The customer is not
-                  emailed yet — call or email them directly until that flow
-                  is built.
+                  Confirm and Decline send the customer an email automatically.
+                  Reset to new will not.
                 </p>
               </div>
             </aside>

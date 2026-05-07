@@ -10,8 +10,8 @@ const STYLES: Record<
     label: "NEW",
   },
   confirmed: {
-    bg: "rgba(111, 184, 154, 0.14)",
-    fg: "var(--color-success)",
+    bg: "rgba(154,169,160,0.08)",
+    fg: "#9aa9a0",
     label: "CONFIRMED",
   },
   declined: {

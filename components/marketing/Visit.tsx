@@ -102,8 +102,8 @@ function MapPlaceholder() {
           stroke="var(--color-chrome)"
           strokeWidth="1.5"
         />
-        <circle cx="450" cy="335" r="11" fill="var(--color-accent-soft)" />
-        <circle cx="450" cy="335" r="5" fill="var(--color-accent)" />
+        <circle cx="450" cy="335" r="12" fill="none" stroke="var(--color-accent)" strokeWidth="1" opacity="0.4" />
+        <circle cx="450" cy="335" r="6" fill="var(--color-accent)" />
 
         <g transform="translate(400, 270)">
           <rect
@@ -151,11 +151,20 @@ export function Visit() {
                 lineHeight: 1.04,
               }}
             >
-              <span className="text-fg-1">{SHOP.location.streetHeading}</span>
+              <em
+                className="not-italic"
+                style={{ color: "var(--color-accent)", opacity: 0.9 }}
+              >
+                {SHOP.location.streetHeading}
+              </em>
               <br />
-              <span className="text-fg-2">
-                {SHOP.location.neighborhoodHeading}
-              </span>
+              <span className="text-fg-2">North Industrial, </span>
+              <em
+                className="not-italic"
+                style={{ color: "var(--color-accent)", opacity: 0.75 }}
+              >
+                Saskatoon.
+              </em>
             </h2>
           </div>
           <a
