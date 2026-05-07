@@ -1,9 +1,6 @@
 import { z } from "zod";
 import { SERVICES } from "@/lib/content/services";
-
-const SERVICE_SLUGS = SERVICES.filter((s) => s.slug !== "photos").map(
-  (s) => s.slug as Exclude<typeof s.slug, "photos">,
-);
+import { SERVICE_SLUGS } from "@maple/core/content/service-slugs";
 
 export const SERVICE_OPTIONS = SERVICES.filter((s) => s.slug !== "photos").map(
   (s) => ({ value: s.slug, label: s.shortTitle }),
@@ -43,7 +40,7 @@ export const bookingSchema = z.object({
     .optional()
     .or(z.literal("")),
 
-  service: z.enum(SERVICE_SLUGS as [string, ...string[]], {
+  service: z.enum([...SERVICE_SLUGS] as [string, ...string[]], {
     error: "Pick a service",
   }),
   preferredDate: z
