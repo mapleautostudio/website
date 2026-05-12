@@ -26,13 +26,7 @@
     "plugins": [
       "expo-router",
       "expo-secure-store",
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/images/notification-icon.png",
-          "color": "#D4A574"
-        }
-      ]
+      "expo-notifications"
     ],
     "extra": {
       "router": { "origin": false },
