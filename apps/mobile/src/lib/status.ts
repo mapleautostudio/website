@@ -9,6 +9,6 @@ export const STATUS_STYLES: Record<BookingStatus, { text: string; bg: string }> 
   completed: { text: colors.fg2,    bg: "rgba(245,242,236,0.06)" },
 };
 
-export function formatStatus(status: BookingStatus): string {
+export function formatStatus(status: string): string {
   return status.replace(/_/g, " ").toUpperCase();
 }
