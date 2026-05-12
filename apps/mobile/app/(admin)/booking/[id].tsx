@@ -75,6 +75,17 @@ export default function BookingDetailScreen() {
   const router = useRouter();
   const { booking, loading, updating, error, updateStatus } = useBookingDetail(id);
 
+  const confirm = useCallback((status: BookingStatus, label: string) => {
+    Alert.alert(
+      `${label}?`,
+      `Mark this booking as ${label.toLowerCase()}?`,
+      [
+        { text: "Cancel", style: "cancel" },
+        { text: label, onPress: () => updateStatus(status) },
+      ],
+    );
+  }, [updateStatus]);
+
   if (loading) {
     return (
       <View style={{ flex: 1, backgroundColor: colors.surface, justifyContent: "center" }}>
@@ -92,17 +103,6 @@ export default function BookingDetailScreen() {
   }
 
   const statusStyle = STATUS_STYLES[booking.status] ?? STATUS_STYLES.declined;
-
-  const confirm = useCallback((status: BookingStatus, label: string) => {
-    Alert.alert(
-      `${label}?`,
-      `Mark this booking as ${label.toLowerCase()}?`,
-      [
-        { text: "Cancel", style: "cancel" },
-        { text: label, onPress: () => updateStatus(status) },
-      ],
-    );
-  }, [updateStatus]);
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: colors.surface }}>

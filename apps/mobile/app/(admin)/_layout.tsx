@@ -4,6 +4,7 @@ import { AppState } from "react-native";
 import * as LocalAuthentication from "expo-local-authentication";
 import * as Notifications from "expo-notifications";
 import { useRouter } from "expo-router";
+import { signOut } from "../../src/lib/auth";
 
 export default function AdminLayout() {
   const router = useRouter();
@@ -33,10 +34,13 @@ export default function AdminLayout() {
         if (!hasHardware) return;
         const enrolled = await LocalAuthentication.isEnrolledAsync();
         if (!enrolled) return;
-        await LocalAuthentication.authenticateAsync({
+        const result = await LocalAuthentication.authenticateAsync({
           promptMessage: "Confirm it's you",
           cancelLabel: "Cancel",
         });
+        if (!result.success) {
+          await signOut();
+        }
       }
     });
     return () => sub.remove();

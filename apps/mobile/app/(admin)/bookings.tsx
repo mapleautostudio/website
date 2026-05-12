@@ -7,7 +7,7 @@ import {
   RefreshControl,
   ActivityIndicator,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, Stack } from "expo-router";
 import { useBookings, type BookingFilter } from "../../src/hooks/useBookings";
 import { STATUS_STYLES, formatStatus } from "../../src/lib/status";
 import { colors } from "../../src/theme/tokens";
@@ -21,6 +21,7 @@ export default function BookingsScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.surface }}>
+      <Stack.Screen options={{ title: "Bookings" }} />
       {/* Filter tabs */}
       <View
         style={{
@@ -139,7 +140,3 @@ export default function BookingsScreen() {
     </View>
   );
 }
-
-export const options = {
-  title: "Bookings",
-};

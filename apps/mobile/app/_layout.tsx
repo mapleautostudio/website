@@ -6,6 +6,14 @@ import * as Notifications from "expo-notifications";
 import { supabase } from "../src/lib/supabase";
 import type { Session } from "@supabase/supabase-js";
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: false,
+  }),
+});
+
 export default function RootLayout() {
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const router = useRouter();
@@ -29,12 +37,15 @@ export default function RootLayout() {
     }
     if (finalStatus !== "granted") return;
 
-    const tokenData = await Notifications.getExpoPushTokenAsync();
-    const token = tokenData.data;
-
-    await supabase
-      .from("push_tokens")
-      .upsert({ token }, { onConflict: "token" });
+    try {
+      const tokenData = await Notifications.getExpoPushTokenAsync();
+      const token = tokenData.data;
+      await supabase
+        .from("push_tokens")
+        .upsert({ token }, { onConflict: "token" });
+    } catch {
+      // EAS projectId not yet configured — skip silently during development
+    }
   }
 
   useEffect(() => {
