@@ -1,6 +1,8 @@
 import "../global.css";
 import { useEffect, useState } from "react";
+import { Platform } from "react-native";
 import { Slot, useRouter, useSegments } from "expo-router";
+import * as Notifications from "expo-notifications";
 import { supabase } from "../src/lib/supabase";
 import type { Session } from "@supabase/supabase-js";
 
@@ -17,6 +19,24 @@ export default function RootLayout() {
     return () => subscription.unsubscribe();
   }, []);
 
+  async function registerPushToken() {
+    if (Platform.OS === "web") return;
+    const { status: existing } = await Notifications.getPermissionsAsync();
+    let finalStatus = existing;
+    if (existing !== "granted") {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+    if (finalStatus !== "granted") return;
+
+    const tokenData = await Notifications.getExpoPushTokenAsync();
+    const token = tokenData.data;
+
+    await supabase
+      .from("push_tokens")
+      .upsert({ token }, { onConflict: "token" });
+  }
+
   useEffect(() => {
     if (session === undefined) return; // still loading
     const inAuthGroup = segments[0] === "(auth)";
@@ -24,6 +44,7 @@ export default function RootLayout() {
       router.replace("/(auth)/login");
     } else if (session && inAuthGroup) {
       router.replace("/(admin)/bookings");
+      registerPushToken();
     }
   }, [session, segments]);
 
