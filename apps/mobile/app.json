@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Maple Auto Studio",
+    "slug": "maple-auto-studio",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "mapleautostudio",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B0B0D"
+    },
+    "ios": {
+      "bundleIdentifier": "ca.mapleautostudio.staff",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "ca.mapleautostudio.staff",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#0B0B0D"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/notification-icon.png",
+          "color": "#D4A574"
+        }
+      ]
+    ],
+    "extra": {
+      "router": { "origin": false },
+      "eas": { "projectId": "FILL_IN_AFTER_EAS_INIT" }
+    }
+  }
+}
