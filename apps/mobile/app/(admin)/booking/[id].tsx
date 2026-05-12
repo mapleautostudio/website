@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   Alert,
 } from "react-native";
+import { useCallback } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useBookingDetail } from "../../../src/hooks/useBookingDetail";
 import { STATUS_STYLES, formatStatus } from "../../../src/lib/status";
@@ -92,7 +93,7 @@ export default function BookingDetailScreen() {
 
   const statusStyle = STATUS_STYLES[booking.status] ?? STATUS_STYLES.declined;
 
-  function confirm(status: BookingStatus, label: string) {
+  const confirm = useCallback((status: BookingStatus, label: string) => {
     Alert.alert(
       `${label}?`,
       `Mark this booking as ${label.toLowerCase()}?`,
@@ -101,7 +102,7 @@ export default function BookingDetailScreen() {
         { text: label, onPress: () => updateStatus(status) },
       ],
     );
-  }
+  }, [updateStatus]);
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: colors.surface }}>
