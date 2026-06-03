@@ -12,7 +12,7 @@ export const SHOP = {
     city: "Saskatoon, SK S7K 8C8",
     note: "Bay entrance at the south end of the unit.",
     parking: "Customer parking out front.",
-    geo: "53.2033° N · 105.7531° W",
+    geo: "52.1332° N · 106.6700° W",
     cityLabel: "Saskatoon",
     streetHeading: "60th Street.",
     neighborhoodHeading: "North Industrial, Saskatoon.",

@@ -9,6 +9,7 @@ export const metadata = {
   title: "Process — Maple Auto Studio",
   description:
     "How a detailing job runs at Maple — drop-off, photographed inspection, written quote, phased work, second-tech QC, delivery with care guide.",
+  alternates: { canonical: "/process" },
   openGraph: {
     title: "Process — Maple Auto Studio",
     description:

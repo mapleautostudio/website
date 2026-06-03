@@ -2,6 +2,7 @@ export const metadata = {
   title: "Maple Auto Studio — Finish, calibrated.",
   description:
     "Independent detailing & accessories studio in Saskatoon. Detailing packages, ceramic coating, paint correction, window tint — by appointment or mobile.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Maple Auto Studio — Finish, calibrated.",
     description:

@@ -48,7 +48,10 @@ export const bookingSchema = z.object({
     .min(1, "Preferred date is required")
     .refine((v) => !Number.isNaN(Date.parse(v)), "Invalid date")
     .refine((v) => {
-      const d = new Date(v);
+      // Parse the YYYY-MM-DD value as local midnight; `new Date("YYYY-MM-DD")`
+      // parses as UTC, which wrongly rejects today's date in negative-offset
+      // timezones (e.g. Saskatoon, UTC-6).
+      const d = new Date(`${v}T00:00:00`);
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       return d >= today;

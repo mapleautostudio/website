@@ -20,6 +20,7 @@ export async function generateMetadata({
   return {
     title: `${service.shortTitle} — Maple Auto Studio`,
     description: service.hero.sub,
+    alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
       title: `${service.shortTitle} — Maple Auto Studio`,
       description: service.hero.sub,
