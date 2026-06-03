@@ -37,5 +37,5 @@ yarn-error.log*
 # brainstorming visual companion
 .superpowers
 
-# local planning assets
-photos/
+# local planning assets (root only — must not match the /photos app route)
+/photos/

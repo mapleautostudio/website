@@ -9,6 +9,7 @@ export const metadata = {
   title: "Photos — Maple Auto Studio",
   description:
     "Photographs of recent work at Maple Auto Studio — detailing, ceramic coating, paint correction, tint, and accessories.",
+  alternates: { canonical: "/photos" },
   openGraph: {
     title: "Photos — Maple Auto Studio",
     description:

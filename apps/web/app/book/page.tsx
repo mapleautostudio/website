@@ -9,6 +9,7 @@ export const metadata = {
   title: "Book service — Maple Auto Studio",
   description:
     "Request a booking with Maple Auto Studio. We confirm by phone or email within the hour.",
+  alternates: { canonical: "/book" },
   openGraph: {
     title: "Book service — Maple Auto Studio",
     description:
