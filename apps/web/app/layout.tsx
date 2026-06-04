@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -46,6 +46,13 @@ export const metadata: Metadata = {
       "Independent detailing partner of Akaal Auto Hub. Detailing packages, ceramic coating, paint correction, and tint — by appointment or mobile pickup.",
     images: ["/opengraph-image"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0f1418" },
+    { media: "(prefers-color-scheme: light)", color: "#f2f4f6" },
+  ],
 };
 
 const themeInitScript = `
