@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Maple Auto Studio
 
-## Getting Started
+Marketing and booking site for **Maple Auto Studio** — an independent auto
+detailing studio in Saskatoon (in partnership with Akaal Auto Hub). Customers
+browse services and request bookings; the shop reviews and manages those
+requests from a password-gated admin dashboard.
 
-First, run the development server:
+## Monorepo layout
+
+npm workspaces driven by [Turborepo](https://turbo.build/):
+
+| Path             | What it is                                                        |
+| ---------------- | ----------------------------------------------------------------- |
+| `apps/web`       | Next.js 16 (App Router) marketing site, booking flow, and admin   |
+| `apps/mobile`    | Expo / React Native staff app (booking notifications)             |
+| `packages/core`  | Shared content and logic consumed by both apps (`@maple/core`)    |
+
+## Stack
+
+- **Next.js 16** / App Router / TypeScript
+- **Tailwind CSS v4** + **Framer Motion**
+- **Supabase** — Postgres, auth, and row-level security for booking data
+- **Resend** — transactional email for booking notifications
+- **Vercel** — hosting for the web app
+- **Expo 54 / React Native 0.81** — staff mobile app
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install            # install all workspaces
+
+cp apps/web/.env.local.example apps/web/.env.local   # then fill in values
+
+npm run dev            # runs the web app (turbo dev --filter=web)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Mobile app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run start --workspace=mobile   # Expo dev server
+```
 
-## Learn More
+## Environment
 
-To learn more about Next.js, take a look at the following resources:
+`apps/web` reads its configuration from `apps/web/.env.local`. See
+`apps/web/.env.local.example` for the full list — Resend (`RESEND_API_KEY`,
+`BOOKING_NOTIFY_TO`, `BOOKING_NOTIFY_FROM`) and Supabase (`SUPABASE_URL`,
+`SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `ADMIN_EMAILS`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> The Supabase service-role key bypasses RLS and is server-only — never expose
+> it to the client.
 
+## Scripts
 
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the web app in development     |
+| `npm run build` | Build all workspaces via Turbo       |
+| `npm run lint`  | Lint all workspaces via Turbo        |
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The web app deploys to Vercel. Configure the same environment variables from
+`.env.local.example` in the Vercel project settings before deploying.
