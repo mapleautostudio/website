@@ -83,8 +83,11 @@ export const bookingSchema = z.object({
     .optional()
     .or(z.literal("")),
 
-  // Honeypot — must stay empty. Bots tend to fill every field.
-  website: z.string().max(0).optional().or(z.literal("")),
+  // Honeypot — hidden from real users, so it should always arrive empty.
+  // Accept any short value (rather than rejecting it) so the API can detect a
+  // filled honeypot and silently return a fake success, instead of bouncing
+  // the bot with a 422 that signals the field was caught.
+  website: z.string().max(100).optional(),
 });
 
 export type BookingInput = z.infer<typeof bookingSchema>;
