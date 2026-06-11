@@ -1,0 +1,31 @@
+name: Supabase keep-alive
+
+# Free-tier Supabase projects pause after ~7 days of inactivity, which takes
+# the booking form and admin view offline until someone un-pauses the project
+# by hand. This workflow pings the database on a weekly schedule so it never
+# goes to sleep, replacing the manual "insert a booking row every week" habit.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   SUPABASE_URL                — e.g. https://xxxx.supabase.co
+#   SUPABASE_SERVICE_ROLE_KEY   — service role key (Project Settings → API)
+
+on:
+  schedule:
+    # Every Monday at 08:17 UTC. Well inside the 7-day pause window.
+    - cron: "17 8 * * 1"
+  # Allow running it by hand from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Ping Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node .github/scripts/supabase-keepalive.mjs
