@@ -1,7 +1,8 @@
 export const SHOP = {
   brand: {
     wordmark: "MAPLE",
-    sub: "AUTO STUDIO · YXE",
+    extension: "AUTO STUDIO",
+    tag: "YXE",
     full: "Maple Auto Studio",
   },
   description:

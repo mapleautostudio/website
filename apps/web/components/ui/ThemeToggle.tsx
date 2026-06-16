@@ -10,7 +10,7 @@ export function ThemeToggle({
 }: {
   variant?: "icon" | "row";
 }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

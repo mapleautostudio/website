@@ -59,8 +59,10 @@ const themeInitScript = `
 (function () {
   try {
     var t = localStorage.getItem('theme');
-    if (t === 'light') document.documentElement.classList.add('light');
-  } catch (e) {}
+    if (t !== 'dark') document.documentElement.classList.add('light');
+  } catch (e) {
+    document.documentElement.classList.add('light');
+  }
 })();
 `;
 

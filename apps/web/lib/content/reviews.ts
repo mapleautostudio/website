@@ -49,10 +49,10 @@ export const REVIEWS_META = {
 
 export const PILLARS = [
   {
-    big: "12",
-    small: "years",
-    title: "One detailer, your car.",
-    body: "Khus has 12 years on paint, ceramic, and interior work. The same hands prep, polish, and coat your vehicle from drop-off to pickup — no rotation between staff mid-job.",
+    big: "5+",
+    small: "yrs of exp",
+    title: "Same hands, every step.",
+    body: "5+ years on paint, ceramic, and interior work. The same hands prep, polish, and coat your vehicle from drop-off to pickup — no rotation between staff mid-job.",
   },
   {
     big: "4.9",
