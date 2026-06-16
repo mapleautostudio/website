@@ -28,13 +28,14 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" }) {
         className="font-display font-medium leading-none"
         style={{ fontSize: wordmarkSize, letterSpacing: "0.01em" }}
       >
-        {SHOP.brand.wordmark}
+        <em className="italic">{SHOP.brand.wordmark}</em>
+        <span className="hidden md:inline"> {SHOP.brand.extension}</span>
       </span>
       <span
         className="eyebrow hidden md:inline"
         style={{ fontSize: subSize, letterSpacing: "0.16em", marginLeft: 4 }}
       >
-        {SHOP.brand.sub}
+        {SHOP.brand.tag}
       </span>
     </Link>
   );
