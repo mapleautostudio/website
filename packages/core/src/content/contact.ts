@@ -17,8 +17,8 @@ export const SHOP = {
     streetHeading: "60th Street.",
     neighborhoodHeading: "North Industrial, Saskatoon.",
   },
-  phone: "306 970 0122",
-  phoneTel: "+13069700122",
+  phone: "639 800 1000",
+  phoneTel: "+16398001000",
   email: "service@mapleautostudio.ca",
   hours: [
     { day: "Mon–Fri", time: "8:00 – 18:00" },
