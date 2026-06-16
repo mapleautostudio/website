@@ -58,7 +58,7 @@ export default async function Page({
       "@type": "LocalBusiness",
       name: "Maple Auto Studio",
       url: "https://mapleautostudio.ca",
-      telephone: "+13069700122",
+      telephone: "+16398001000",
       address: {
         "@type": "PostalAddress",
         streetAddress: "331 60 ST E",
