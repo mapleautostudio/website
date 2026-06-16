@@ -102,8 +102,8 @@ function MapPlaceholder() {
           stroke="var(--color-chrome)"
           strokeWidth="1.5"
         />
-        <circle cx="450" cy="335" r="12" fill="none" stroke="var(--color-accent)" strokeWidth="1" opacity="0.4" />
-        <circle cx="450" cy="335" r="6" fill="var(--color-accent)" />
+        <circle cx="390" cy="335" r="12" fill="none" stroke="var(--color-accent)" strokeWidth="1" opacity="0.4" />
+        <circle cx="390" cy="335" r="6" fill="var(--color-accent)" />
 
         <g transform="translate(400, 270)">
           <rect
