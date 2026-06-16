@@ -64,3 +64,17 @@ npm run start --workspace=mobile   # Expo dev server
 
 The web app deploys to Vercel. Configure the same environment variables from
 `.env.local.example` in the Vercel project settings before deploying.
+
+## Maintenance
+
+Free-tier Supabase projects pause after ~7 days of inactivity, which takes the
+booking form and admin view offline. The **Supabase keep-alive** GitHub Action
+(`.github/workflows/supabase-keepalive.yml`) pings the database every Monday so
+the project never sleeps — no more manual weekly inserts.
+
+It needs two repository secrets (**Settings → Secrets and variables → Actions**):
+
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+You can also trigger it on demand from the **Actions** tab.
