@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "turbo dev --filter=web",
     "build": "turbo build",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "keepalive": "node .github/scripts/supabase-keepalive.mjs"
   },
   "devDependencies": {
     "turbo": "^2.0.0"
