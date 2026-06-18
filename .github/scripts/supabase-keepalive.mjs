@@ -31,6 +31,8 @@ try {
       apikey: key,
       Authorization: `Bearer ${key}`,
     },
+    // Don't let a stalled connection hang the whole job.
+    signal: AbortSignal.timeout(30000),
   });
 
   if (!res.ok) {
