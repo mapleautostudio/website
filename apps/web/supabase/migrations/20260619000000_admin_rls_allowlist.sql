@@ -72,7 +72,23 @@ create policy "Admin update bookings"
 
 -- 4. Replace the over-permissive push_tokens policy. Mobile registers its token
 -- only after an admin sign-in, so admins can still upsert; non-admins can't.
+--
+-- Create the table if this project never ran 20260507000000_push_tokens.sql
+-- (e.g. the mobile push feature was never set up here). Doing it here — with
+-- the admin-only policy attached straight away — means push_tokens can never
+-- exist in the old "any authenticated user" state. Definition matches
+-- 20260507000000_push_tokens.sql.
+create extension if not exists pgcrypto;
+
+create table if not exists public.push_tokens (
+  id uuid primary key default gen_random_uuid(),
+  token text not null unique,
+  created_at timestamptz not null default now()
+);
+alter table public.push_tokens enable row level security;
+
 drop policy if exists "Authenticated users can manage tokens" on public.push_tokens;
+drop policy if exists "Admins can manage push tokens" on public.push_tokens;
 
 create policy "Admins can manage push tokens"
   on public.push_tokens for all
