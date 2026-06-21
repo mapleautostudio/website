@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { bookingSchema } from "@/lib/booking/schema";
+import { checkBookingRateLimit, getClientIp } from "@/lib/booking/rate-limit";
 import { EMAIL_CONFIG, getResend } from "@/lib/email/resend";
 import { bookingNotificationEmail } from "@/lib/email/templates/booking-notification";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
@@ -17,6 +18,25 @@ function referenceCode() {
 }
 
 export async function POST(request: Request) {
+  const supabase = getSupabaseAdmin();
+
+  // Cap submissions per client IP before doing any real work, so a flood
+  // can't fill the table or burn the email/push quota. Fails open.
+  const rateLimit = await checkBookingRateLimit(supabase, getClientIp(request));
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "Too many booking requests from this connection. Please wait a few minutes and try again, or call us directly — we'll book you on the spot.",
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateLimit.retryAfterSeconds) },
+      },
+    );
+  }
+
   let payload: unknown;
   try {
     payload = await request.json();
@@ -46,7 +66,6 @@ export async function POST(request: Request) {
   }
 
   const reference = referenceCode();
-  const supabase = getSupabaseAdmin();
 
   const insert: BookingInsert = {
     reference,
