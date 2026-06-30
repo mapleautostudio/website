@@ -3,9 +3,10 @@ import Image from "next/image";
 import { SHOP } from "@/lib/content/contact";
 
 export function Logo({ size = "md" }: { size?: "sm" | "md" }) {
-  const wordmarkSize = size === "sm" ? 18 : 22;
+  const wordmarkSize = size === "sm" ? 23 : 22;
+  const wordmarkWeight = size === "sm" ? 400 : 500;
   const iconSize = size === "sm" ? 26 : 32;
-  const subSize = 11;
+  const subSize = size === "sm" ? 14 : 11;
   return (
     <Link
       href="/"
@@ -25,8 +26,12 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" }) {
         }}
       />
       <span
-        className="font-display font-medium leading-none whitespace-nowrap"
-        style={{ fontSize: wordmarkSize, letterSpacing: "0.01em" }}
+        className="font-display leading-none whitespace-nowrap"
+        style={{
+          fontSize: wordmarkSize,
+          fontWeight: wordmarkWeight,
+          letterSpacing: "0.01em",
+        }}
       >
         <em className="italic">{SHOP.brand.wordmark}</em>
         <span className="md:hidden lg:inline"> {SHOP.brand.extension}</span>

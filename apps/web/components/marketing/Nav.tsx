@@ -78,7 +78,7 @@ export function Nav() {
         <div className="container-x flex h-full items-center justify-between gap-6">
           <Logo size="sm" />
 
-          <nav className="hidden md:flex items-center gap-9 text-[13px] font-medium">
+          <nav className="hidden md:flex items-center gap-9 text-[16px] font-normal">
             <div
               className="relative"
               onMouseEnter={openDropdown}
