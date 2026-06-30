@@ -1,12 +1,12 @@
 export const metadata = {
   title: "Maple Auto Studio — Finish, calibrated.",
   description:
-    "Independent detailing & accessories studio in Saskatoon. Detailing packages, ceramic coating, paint correction, window tint — by appointment or mobile.",
+    "Independent detailing & accessories studio in Saskatoon. Detailing packages, ceramic coating, paint correction, window tint — by appointment.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Maple Auto Studio — Finish, calibrated.",
     description:
-      "Independent detailing & accessories studio in Saskatoon. Detailing packages, ceramic coating, paint correction, window tint — by appointment or mobile.",
+      "Independent detailing & accessories studio in Saskatoon. Detailing packages, ceramic coating, paint correction, window tint — by appointment.",
     url: "https://mapleautostudio.ca",
     siteName: "Maple Auto Studio",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Maple Auto Studio" }],
@@ -17,7 +17,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Maple Auto Studio — Finish, calibrated.",
     description:
-      "Independent detailing & accessories studio in Saskatoon. Detailing packages, ceramic coating, paint correction, window tint — by appointment or mobile.",
+      "Independent detailing & accessories studio in Saskatoon. Detailing packages, ceramic coating, paint correction, window tint — by appointment.",
     images: ["/opengraph-image"],
   },
 };

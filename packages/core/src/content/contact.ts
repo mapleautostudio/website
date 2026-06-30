@@ -31,8 +31,8 @@ export const SHOP = {
     { platform: "TikTok", handle: "@mapleautostudio", url: "https://tiktok.com/@mapleautostudio" },
     { platform: "Facebook", handle: "MapleAutoStudio", url: "https://facebook.com/MapleAutoStudio" },
   ],
-  established: "EST. 2026 · SASKATOON · MOBILE CITY-WIDE",
-  appointmentNote: "YXE · BY APPOINTMENT OR MOBILE",
+  established: "EST. 2026 · SASKATOON",
+  appointmentNote: "YXE · BY APPOINTMENT",
 };
 
 export const BOOKING_HREF = "/book";

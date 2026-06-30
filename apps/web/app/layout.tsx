@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mapleautostudio.ca"),
   title: "Maple Auto Studio — Finish, calibrated.",
   description:
-    "Independent detailing partner of Akaal Auto Hub. Detailing packages, ceramic coating, paint correction, and tint — by appointment or mobile pickup.",
+    "Independent detailing partner of Akaal Auto Hub. Detailing packages, ceramic coating, paint correction, and tint — by appointment.",
   openGraph: {
     title: "Maple Auto Studio — Finish, calibrated.",
     description:
-      "Independent detailing partner of Akaal Auto Hub. Detailing packages, ceramic coating, paint correction, and tint — by appointment or mobile pickup.",
+      "Independent detailing partner of Akaal Auto Hub. Detailing packages, ceramic coating, paint correction, and tint — by appointment.",
     url: "https://mapleautostudio.ca",
     siteName: "Maple Auto Studio",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Maple Auto Studio" }],
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maple Auto Studio — Finish, calibrated.",
     description:
-      "Independent detailing partner of Akaal Auto Hub. Detailing packages, ceramic coating, paint correction, and tint — by appointment or mobile pickup.",
+      "Independent detailing partner of Akaal Auto Hub. Detailing packages, ceramic coating, paint correction, and tint — by appointment.",
     images: ["/opengraph-image"],
   },
 };
