@@ -49,10 +49,10 @@ export const REVIEWS_META = {
 
 export const PILLARS = [
   {
-    big: "5+",
-    small: "yrs of exp",
+    big: "1",
+    small: "tech per car",
     title: "Same hands, every step.",
-    body: "5+ years on paint, ceramic, and interior work. The same hands prep, polish, and coat your vehicle from drop-off to pickup — no rotation between staff mid-job.",
+    body: "One technician handles your vehicle through every stage — walk-around, prep, correction, coating, and final detail. The person who inspected it is the person who finishes it.",
   },
   {
     big: "4.9",
