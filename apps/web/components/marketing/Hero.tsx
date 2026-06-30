@@ -31,7 +31,12 @@ export function Hero() {
           </h1>
           <p
             className="reveal reveal-3 body-lg m-0"
-            style={{ maxWidth: 560 }}
+            style={{
+              maxWidth: 560,
+              color: "var(--color-fg-1)",
+              textShadow:
+                "0 0 18px var(--color-surface-deep), 0 0 6px var(--color-surface-deep), 0 1px 2px var(--color-surface-deep)",
+            }}
           >
             Detailing, ceramic coating, paint correction, and tint. Photographed before-and-after, written quotes, and pickup or dropoff if you&apos;d rather we come to you.
           </p>
