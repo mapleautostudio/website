@@ -33,19 +33,29 @@ export function Hero() {
             className="reveal reveal-3"
             style={{
               maxWidth: 620,
-              padding: "18px 22px",
-              backgroundColor:
-                "color-mix(in srgb, var(--color-surface-deep) 55%, transparent)",
-              backdropFilter: "blur(20px) saturate(130%)",
-              WebkitBackdropFilter: "blur(20px) saturate(130%)",
-              borderRadius: 4,
-              border:
-                "1px solid color-mix(in srgb, var(--color-fg-3) 14%, transparent)",
+              position: "relative",
+              padding: "8px 4px",
             }}
           >
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                inset: "-12px -24px",
+                backgroundColor:
+                  "color-mix(in srgb, var(--color-surface-deep) 55%, transparent)",
+                backdropFilter: "blur(28px) saturate(130%)",
+                WebkitBackdropFilter: "blur(28px) saturate(130%)",
+                maskImage:
+                  "radial-gradient(ellipse 90% 130% at 32% 50%, black 25%, transparent 100%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 90% 130% at 32% 50%, black 25%, transparent 100%)",
+                pointerEvents: "none",
+              }}
+            />
             <p
               className="body-lg m-0"
-              style={{ color: "var(--color-fg-1)" }}
+              style={{ position: "relative", color: "var(--color-fg-1)" }}
             >
               <em
                 className="not-italic"
