@@ -28,8 +28,7 @@ export function Logo({ size = "md" }: { size?: "sm" | "md" }) {
         className="font-display font-medium leading-none"
         style={{ fontSize: wordmarkSize, letterSpacing: "0.01em" }}
       >
-        <em className="italic">{SHOP.brand.wordmark}</em>
-        <span className="hidden md:inline"> {SHOP.brand.extension}</span>
+        <em className="italic">{SHOP.brand.wordmark}</em> {SHOP.brand.extension}
       </span>
       <span
         className="eyebrow hidden md:inline"
