@@ -29,17 +29,35 @@ export function Hero() {
               calibrated.
             </em>
           </h1>
-          <p
-            className="reveal reveal-3 body-lg m-0"
+          <div
+            className="reveal reveal-3"
             style={{
-              maxWidth: 560,
-              color: "var(--color-fg-1)",
-              textShadow:
-                "0 0 18px var(--color-surface-deep), 0 0 6px var(--color-surface-deep), 0 1px 2px var(--color-surface-deep)",
+              maxWidth: 620,
+              padding: "18px 22px",
+              backgroundColor:
+                "color-mix(in srgb, var(--color-surface-deep) 55%, transparent)",
+              backdropFilter: "blur(20px) saturate(130%)",
+              WebkitBackdropFilter: "blur(20px) saturate(130%)",
+              borderRadius: 4,
+              border:
+                "1px solid color-mix(in srgb, var(--color-fg-3) 14%, transparent)",
             }}
           >
-            Detailing, window tinting, ceramic coating, and paint correction. Every panel photographed before-and-after, with a transparent quote before any product touches paint.
-          </p>
+            <p
+              className="body-lg m-0"
+              style={{ color: "var(--color-fg-1)" }}
+            >
+              <em
+                className="not-italic"
+                style={{ color: "var(--color-fg-1)", fontWeight: 500 }}
+              >
+                Detailing, window tinting, ceramic coating, and paint correction.
+              </em>{" "}
+              <span style={{ color: "var(--color-fg-2)" }}>
+                Every panel photographed before-and-after, with a transparent quote before any product touches paint.
+              </span>
+            </p>
+          </div>
           <div className="reveal reveal-4 flex flex-wrap gap-3 mt-2">
             <Link href={BOOKING_HREF} className="btn btn--primary">
               Book service
