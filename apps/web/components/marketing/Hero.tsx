@@ -38,7 +38,7 @@ export function Hero() {
                 "0 0 18px var(--color-surface-deep), 0 0 6px var(--color-surface-deep), 0 1px 2px var(--color-surface-deep)",
             }}
           >
-            Detailing, ceramic coating, paint correction, and tint. Photographed before-and-after, written quotes, and pickup or dropoff if you&apos;d rather we come to you.
+            Detailing, window tinting, ceramic coating, and paint correction. Every panel photographed before-and-after, with a transparent quote before any product touches paint.
           </p>
           <div className="reveal reveal-4 flex flex-wrap gap-3 mt-2">
             <Link href={BOOKING_HREF} className="btn btn--primary">

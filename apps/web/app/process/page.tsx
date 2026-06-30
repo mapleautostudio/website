@@ -33,8 +33,8 @@ const STEPS = [
   {
     n: "01",
     title: "Arrival.",
-    body: "Pull in by appointment, or ask about pickup and dropoff within Saskatoon city limits when you book. Walk-around with you, key handover, baseline paint-thickness reading on every panel if correction is on the work order.",
-    note: "BY APPOINTMENT OR PICKUP",
+    body: "Pull in at your scheduled appointment. Walk-around with you, key handover, baseline paint-thickness reading on every panel if correction is on the work order.",
+    note: "BY APPOINTMENT",
   },
   {
     n: "02",
