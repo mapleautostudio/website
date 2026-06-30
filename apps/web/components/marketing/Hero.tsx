@@ -41,15 +41,15 @@ export function Hero() {
               aria-hidden
               style={{
                 position: "absolute",
-                inset: "-12px -24px",
+                inset: "-28px -56px",
                 backgroundColor:
-                  "color-mix(in srgb, var(--color-surface-deep) 55%, transparent)",
-                backdropFilter: "blur(28px) saturate(130%)",
-                WebkitBackdropFilter: "blur(28px) saturate(130%)",
+                  "color-mix(in srgb, var(--color-surface-deep) 40%, transparent)",
+                backdropFilter: "blur(36px) saturate(125%)",
+                WebkitBackdropFilter: "blur(36px) saturate(125%)",
                 maskImage:
-                  "radial-gradient(ellipse 90% 130% at 32% 50%, black 25%, transparent 100%)",
+                  "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 100%)",
                 WebkitMaskImage:
-                  "radial-gradient(ellipse 90% 130% at 32% 50%, black 25%, transparent 100%)",
+                  "radial-gradient(ellipse 70% 100% at 50% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 100%)",
                 pointerEvents: "none",
               }}
             />
