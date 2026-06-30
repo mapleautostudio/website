@@ -12,9 +12,6 @@ export function Hero() {
 
       <div className="container-x relative z-10 w-full">
         <div className="max-w-[920px] flex flex-col gap-6 md:gap-8">
-          <span className="eyebrow reveal reveal-1">
-            {SHOP.appointmentNote}
-          </span>
           <h1
             className="reveal reveal-2 m-0 font-display font-light"
             style={{
