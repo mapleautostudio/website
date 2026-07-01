@@ -127,13 +127,29 @@ export function Footer() {
         </div>
 
         <div
-          className="pt-7 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2"
+          className="pt-7 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3"
           style={{ borderTop: "1px solid var(--color-hairline)" }}
         >
           <span className="meta">
             © {year} MAPLE AUTO STUDIO · YXE. ALL RIGHTS RESERVED.
           </span>
-          <span className="meta">v1.0 · BUILD 0501</span>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/privacy"
+              className="text-fg-3 hover:text-chrome transition-colors"
+              style={{ fontFamily: "var(--font-mono)", fontSize: 13 }}
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-fg-3 hover:text-chrome transition-colors"
+              style={{ fontFamily: "var(--font-mono)", fontSize: 13 }}
+            >
+              Terms
+            </Link>
+            <span className="meta">v1.0 · BUILD 0501</span>
+          </div>
         </div>
       </div>
     </footer>
