@@ -78,7 +78,7 @@ Items I baked in as placeholders that the customer must confirm before this site
 - `app/photos/page.tsx` — gallery placeholder with 9-tile grid of stylized cards, each captioned with a service type and vehicle. A footer note flags that real photographs need to replace these tiles before launch.
 
 **Booking placeholder**
-- All "Book service" / "Book detailing" / etc. CTAs link to `BOOKING_MAILTO`, which opens the user's mail client with `to: service@mapleautostudio.ca`, `subject: Booking request — Maple Auto Studio`, and a prefilled body asking for service / vehicle / preferred date / contact phone. To replace with a real form route, find usages of `BOOKING_MAILTO` (3 components: Nav, Hero, ServiceDetailPage; plus CtaBand) and swap to `<Link href="/book">` once the route exists.
+- All "Book service" / "Book detailing" / etc. CTAs link to `BOOKING_MAILTO`, which opens the user's mail client with `to: info@mapleauto.studio`, `subject: Booking request — Maple Auto Studio`, and a prefilled body asking for service / vehicle / preferred date / contact phone. To replace with a real form route, find usages of `BOOKING_MAILTO` (3 components: Nav, Hero, ServiceDetailPage; plus CtaBand) and swap to `<Link href="/book">` once the route exists.
 
 ### Build verification
 
