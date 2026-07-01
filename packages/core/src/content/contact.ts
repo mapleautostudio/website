@@ -20,7 +20,7 @@ export const SHOP = {
   },
   phone: "639 800 1000",
   phoneTel: "+16398001000",
-  email: "service@mapleautostudio.ca",
+  email: "info@mapleauto.studio",
   hours: [
     { day: "Mon–Fri", time: "8:00 – 18:00" },
     { day: "Saturday", time: "9:00 – 15:00" },
