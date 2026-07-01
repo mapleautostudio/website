@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Phone, ChevronDown, Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { label: "Visit", href: "/#visit" },
 ];
 
-export function Nav() {
+export function Nav({ overDarkHero = false }: { overDarkHero?: boolean } = {}) {
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -57,24 +57,32 @@ export function Nav() {
     dropdownTimer.current = setTimeout(() => setServicesOpen(false), 120);
   };
 
+  const chrome = scrolled || mobileOpen;
+  const onDark = overDarkHero && !chrome;
+  const headerStyle: CSSProperties = {
+    height: chrome ? 56 : 72,
+    background: chrome ? "var(--color-nav-bg)" : "transparent",
+    backdropFilter: chrome ? "blur(16px)" : "none",
+    WebkitBackdropFilter: chrome ? "blur(16px)" : "none",
+    borderBottom: chrome
+      ? "1px solid var(--color-hairline)"
+      : "1px solid transparent",
+    transition: "all 400ms var(--ease-precise)",
+  };
+  if (onDark) {
+    // Sitting over the dark packages hero: flip nav text to light so it reads
+    // (mirrors how the nav goes light in dark mode). Reverts once scrolled.
+    const vars = headerStyle as Record<string, string | number>;
+    vars["--color-fg-1"] = "#f4ece2";
+    vars["--color-fg-2"] = "#d7d2c9";
+    vars["--color-fg-3"] = "#b3aea4";
+    vars["--color-chrome"] = "#ffffff";
+    vars.color = "#f4ece2";
+  }
+
   return (
     <>
-      <header
-        className="fixed inset-x-0 top-0 z-50"
-        style={{
-          height: scrolled || mobileOpen ? 56 : 72,
-          background:
-            scrolled || mobileOpen ? "var(--color-nav-bg)" : "transparent",
-          backdropFilter: scrolled || mobileOpen ? "blur(16px)" : "none",
-          WebkitBackdropFilter:
-            scrolled || mobileOpen ? "blur(16px)" : "none",
-          borderBottom:
-            scrolled || mobileOpen
-              ? "1px solid var(--color-hairline)"
-              : "1px solid transparent",
-          transition: "all 400ms var(--ease-precise)",
-        }}
-      >
+      <header className="fixed inset-x-0 top-0 z-50" style={headerStyle}>
         <div className="container-x flex h-full items-center justify-between gap-6">
           <Logo size="sm" />
 
