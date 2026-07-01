@@ -78,7 +78,7 @@ export default async function Page({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Nav />
+      <Nav overDarkHero={service.slug === "detailing-packages"} />
       <ServiceDetailPage service={service} />
       <CtaBand />
       <Footer />

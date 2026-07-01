@@ -58,30 +58,8 @@ export const SERVICES: Service[] = [
     heroPlaceholder: {
       meta: ["4 PACKAGES", "HALF DAY TO MULTI-DAY", "QUOTED BY VEHICLE"],
     },
-    packages: [
-      {
-        name: "Express",
-        duration: "2h",
-        description: "Wash, decon, vacuum, interior wipe-down. Daily-driver upkeep.",
-      },
-      {
-        name: "Full",
-        duration: "Half day",
-        description: "Express plus clay bar, leather conditioning, sealant, wheel-well dressing.",
-      },
-      {
-        name: "Premium",
-        duration: "Full day",
-        description: "Full plus single-stage paint correction, engine bay detail, glass treatment.",
-      },
-      {
-        name: "Concours",
-        duration: "1–2 days",
-        description: "Multi-stage correction, full ceramic prep, every panel photographed.",
-      },
-    ],
     faq: [
-      { q: "How long does a full detail last?", a: "Three to four months for a Full, six to nine for Premium, twelve-plus for Concours with ceramic." },
+      { q: "How long does a full detail last?", a: "A few months for a Complete Care, and noticeably longer with a Master Detail — especially once you add a ceramic coating." },
       { q: "What's the difference between detail and correction?", a: "Detail removes dirt and contaminants. Correction removes scratches and swirl marks from the clear coat." },
       { q: "Do you do mobile?", a: "Yes — pickup and dropoff available within Saskatoon city limits on most packages. Ask when booking and we'll quote it." },
     ],
