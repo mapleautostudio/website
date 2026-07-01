@@ -172,9 +172,13 @@ export function Nav() {
             <ThemeToggle />
             <a
               href={`tel:${SHOP.phoneTel}`}
-              className="inline-flex items-center gap-2 text-[13px] text-fg-2 hover:text-chrome transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 text-[16px] font-medium text-fg-1 hover:text-chrome transition-colors whitespace-nowrap"
             >
-              <Phone size={14} strokeWidth={1.5} />
+              <Phone
+                size={16}
+                strokeWidth={2}
+                style={{ color: "var(--color-accent)" }}
+              />
               <span>{SHOP.phone}</span>
             </a>
             <Link href={BOOKING_HREF} className="btn btn--primary">
