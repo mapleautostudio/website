@@ -22,138 +22,135 @@ export default function TermsPage() {
   return (
     <LegalDoc
       title="Terms of Service"
-      updated="June 30, 2026"
-      intro="These Terms of Service (“Terms”) govern your use of Maple Auto Studio’s services, website, and communications, including our on-site chat. By booking an appointment, requesting a quote, or otherwise using our services, you agree to these Terms."
+      updated="July 1, 2026"
+      intro="These Terms of Service (“Terms”) govern your use of the services provided by Maple Auto Studio (“we,” “us,” or “our”), located at 331 60 St E, Saskatoon, Saskatchewan. By booking a service, contacting us, or using our website, you agree to these Terms."
     >
       <LegalSection index={1} title="Our Services">
         <p>
-          Maple Auto Studio provides automotive detailing and appearance services
-          including, but not limited to, detailing packages, ceramic coating, paint
-          correction, window tint, boat and trailer detailing, and accessory
-          installation. Mechanical repair is handled by our partner, Akaal Auto
-          Hub. Specific services and availability are subject to change without
-          notice.
+          Maple Auto Studio provides automotive detailing, window tinting,
+          ceramic coating, paint correction, boat detailing (trailerable units
+          only), and related accessories and installation. Services are provided
+          by appointment.
         </p>
       </LegalSection>
 
-      <LegalSection index={2} title="Quotes &amp; Pricing">
-        <ul>
-          <li>
-            Quotes provided over the phone, by text, through our on-site chat, or
-            in person are <strong>estimates only</strong> and may change once your
-            vehicle has been inspected in person.
-          </li>
-          <li>We provide quotes directly — pricing is not published on this website.</li>
-          <li>
-            Final pricing is confirmed with you before any work begins, and we will
-            not carry out additional work beyond what was quoted without your
-            approval.
-          </li>
-          <li>For larger jobs, a deposit may be required before work begins.</li>
-        </ul>
-      </LegalSection>
-
-      <LegalSection index={3} title="Appointments &amp; Scheduling">
+      <LegalSection index={2} title="Quotes and Pricing">
         <p>
-          Maple Auto Studio operates by appointment. Please arrive at your
-          scheduled time; late arrivals may need to be rescheduled. After-hours
-          drop-off may be available — ask our team for details. We make reasonable
-          efforts to complete work within the estimated timeframe, but some
-          services (such as multi-stage paint correction or ceramic coating) can
-          span one or more days, and completion times vary with the scope of work
-          and product cure times.
+          Coatings, correction, tint, and detailing are priced by vehicle and
+          condition. We provide a transparent quote before any product is
+          applied. If a job runs longer than estimated, the quoted price stands
+          unless the scope of work changes. Any change in scope will be
+          communicated to you before we proceed.
         </p>
       </LegalSection>
 
-      <LegalSection index={4} title="Cancellations &amp; No-Shows">
+      <LegalSection index={3} title="Booking and Appointments">
         <p>
-          Please let us know as early as possible if you need to cancel or
-          reschedule an appointment. Repeated no-shows or last-minute cancellations
-          may affect your ability to book future appointments.
+          Appointments can be requested through our website, by phone, or by
+          text. We confirm bookings directly with you. Please arrive with your
+          vehicle reasonably clear of personal belongings so our technician can
+          work efficiently.
+        </p>
+      </LegalSection>
+
+      <LegalSection index={4} title="Cancellations and Rescheduling">
+        <p>
+          If you need to cancel or reschedule, please contact us as far in
+          advance as possible so we can offer your slot to another customer.
+          Deposit and cancellation terms, where they apply, will be communicated
+          to you at the time of booking.
         </p>
       </LegalSection>
 
       <LegalSection index={5} title="Payment">
         <p>
-          Payment is due upon completion of services unless other arrangements have
-          been made in advance. We accept the payment methods listed in-store or
-          communicated to you at the time of booking. Payment is handled in person;
-          we do not process payments through this website. Deposits collected on
-          larger jobs are applied toward the final invoice.
+          Payment is due upon completion of the service unless otherwise agreed
+          in writing. Accepted payment methods will be confirmed at the time of
+          booking.
         </p>
       </LegalSection>
 
-      <LegalSection index={6} title="Vehicle Condition &amp; Liability">
+      <LegalSection index={6} title="Text Message (SMS) Program Terms">
+        <p>
+          By providing your phone number, you consent to receive text messages
+          from Maple Auto Studio regarding your inquiry, appointments, and —
+          where you have separately opted in — promotional offers.
+        </p>
         <ul>
+          <li>Message frequency varies.</li>
+          <li>Message and data rates may apply.</li>
           <li>
-            Please remove personal belongings and valuables from your vehicle
-            before drop-off. Maple Auto Studio is not responsible for items left
-            inside the vehicle.
+            Reply <strong>STOP</strong> at any time to unsubscribe.
           </li>
           <li>
-            We are not responsible for pre-existing damage, mechanical issues, or
-            wear not directly related to the service performed.
+            Reply <strong>HELP</strong> for assistance.
           </li>
           <li>
-            While we take care to protect your vehicle during service, Maple Auto
-            Studio’s liability for any damage arising from our work is limited to
-            the cost of the service provided.
+            Consent to receive text messages is not a condition of purchasing
+            any service.
           </li>
         </ul>
+        <div className="legal-callout">
+          <p>
+            <strong>
+              We do not sell, rent, or share your phone number or your SMS
+              consent with any third parties or affiliates for their marketing
+              purposes.
+            </strong>{" "}
+            For full details on how we handle your information, see our{" "}
+            <Link href="/privacy">Privacy Policy</Link>.
+          </p>
+        </div>
       </LegalSection>
 
-      <LegalSection index={7} title="Service Guarantee">
+      <LegalSection index={7} title="Results and Limitations">
         <p>
-          We stand behind the quality of our work. Coatings and films we install
-          may carry manufacturer or workmanship warranties, which vary by product
-          and are explained at the time of service. If you notice an issue directly
-          related to work we performed, contact us promptly so we can make it right.
+          We take care to deliver professional results, and we document work
+          with before/after photos. However, results can vary depending on the
+          age, condition, and prior treatment of your vehicle’s paint, glass,
+          and surfaces. Pre-existing damage, defects, or wear that cannot be
+          fully corrected will be discussed with you. Detailing and coating
+          services do not guarantee removal of all defects, stains, or
+          imperfections.
         </p>
       </LegalSection>
 
-      <LegalSection index={8} title="Communications &amp; On-Site Chat">
+      <LegalSection index={8} title="Liability">
         <p>
-          By providing your phone number or using our website and on-site chat, you
-          consent to receive communications from Maple Auto Studio about
-          appointments, quotes, and service updates, as described in our{" "}
-          <Link href="/privacy">Privacy Policy</Link>. Message and data rates may
-          apply to text messages. You may opt out of texts at any time by replying
-          STOP.
-        </p>
-        <p>
-          Our on-site chat may use automated or AI-assisted replies to answer common
-          questions and help schedule appointments. Automated replies assist our
-          team and do not replace a final review by our staff for quotes,
-          diagnostics, or service decisions.
+          To the fullest extent permitted by law, Maple Auto Studio is not
+          liable for pre-existing damage, damage arising from prior repairs or
+          aftermarket modifications, or normal wear revealed during the
+          detailing process. Please remove all valuables and personal items from
+          your vehicle before service; we are not responsible for items left
+          behind.
         </p>
       </LegalSection>
 
-      <LegalSection index={9} title="Limitation of Liability">
+      <LegalSection index={9} title="Warranties">
         <p>
-          To the fullest extent permitted by law, Maple Auto Studio is not liable
-          for any indirect, incidental, or consequential damages arising from the
-          use of our services or communications. Nothing in these Terms limits any
-          rights you may have that cannot be excluded under applicable Saskatchewan
-          or Canadian law.
+          Where a manufacturer or product warranty applies (for example, ceramic
+          coatings or window film), the terms of that warranty govern. We will
+          provide warranty details for applicable services at the time of
+          service.
         </p>
       </LegalSection>
 
-      <LegalSection index={10} title="Governing Law">
+      <LegalSection index={10} title="Changes to These Terms">
         <p>
-          These Terms are governed by the laws of the Province of Saskatchewan and
-          the federal laws of Canada applicable therein.
+          We may update these Terms from time to time. The “Effective date”
+          above reflects the most recent revision.
         </p>
       </LegalSection>
 
-      <LegalSection index={11} title="Changes to These Terms">
+      <LegalSection index={11} title="Governing Law">
         <p>
-          We may update these Terms from time to time. Continued use of our services
-          after changes are posted means you accept the revised Terms. The “Last
-          updated” date above reflects the most recent revision.
+          These Terms are governed by the laws of the Province of Saskatchewan
+          and the applicable laws of Canada.
         </p>
       </LegalSection>
 
       <LegalSection index={12} title="Contact Us">
+        <p>Questions about these Terms? Reach us at:</p>
         <div className="legal-callout">
           <p>
             <strong>{SHOP.brand.full}</strong>
@@ -161,9 +158,9 @@ export default function TermsPage() {
           <p>
             {SHOP.location.line1}, {SHOP.location.city}
             <br />
-            Phone: <a href={`tel:${SHOP.phoneTel}`}>{SHOP.phone}</a>
-            <br />
             Email: <a href={`mailto:${SHOP.email}`}>{SHOP.email}</a>
+            <br />
+            Phone: <a href={`tel:${SHOP.phoneTel}`}>{SHOP.phone}</a>
           </p>
         </div>
       </LegalSection>
