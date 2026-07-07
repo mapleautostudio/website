@@ -1,5 +1,9 @@
 import { supabase } from "./supabase";
 
+// Keep this list in sync with the web app's ADMIN_EMAILS and the public.admins
+// table in Supabase (see apps/web/supabase/migrations — admin-only RLS). If an
+// email isn't in public.admins, its session is blocked at the database layer
+// regardless of this check.
 const ADMIN_EMAILS = [
   "mapleautostudio@gmail.com",
   "khushdeep899@gmail.com",
