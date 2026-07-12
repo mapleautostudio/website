@@ -3,7 +3,16 @@
 // hardcoded testimonials and the invented "4.9 · 213 reviews" figure were
 // removed — the site only shows real, verifiable reviews.
 
-export const PILLARS = [
+type Pillar = {
+  big: string;
+  small?: string;
+  smallStar?: boolean;
+  suffix?: string;
+  title: string;
+  body: string;
+};
+
+export const PILLARS: Pillar[] = [
   {
     big: "1",
     small: "tech per car",
@@ -11,11 +20,10 @@ export const PILLARS = [
     body: "One technician handles your vehicle through every stage — walk-around, prep, correction, coating, and final detail. The person who inspected it is the person who finishes it.",
   },
   {
-    big: "4.9",
-    smallStar: true,
-    suffix: "· 200+",
+    big: "100",
+    small: "% documented",
     title: "Photographed, every panel.",
-    body: "Before/after photos of every panel ship to your phone before pickup. 4.9 star average across 213 verified Google reviews — we don't curate them and we don't pay for them.",
+    body: "Before/after photos of every panel land on your phone before pickup — the correction speaks for itself. And every Google review on our page is public: real customers, unedited, never paid for.",
   },
   {
     big: "0",
