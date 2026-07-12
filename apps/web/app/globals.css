@@ -983,3 +983,94 @@ input[type="number"] {
 .pe-help li {
   margin: 5px 0;
 }
+
+/* =================================================================
+   Public comparison matrix (/services/detailing-packages)
+   ================================================================= */
+.pkg-matrix-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-card);
+  background: var(--color-elevated);
+}
+.pkg-matrix {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+}
+.pkg-matrix th,
+.pkg-matrix td {
+  padding: 14px 16px;
+  border-top: 1px solid var(--color-hairline);
+  text-align: center;
+  font-size: 14px;
+}
+.pkg-matrix thead th {
+  border-top: none;
+  vertical-align: bottom;
+  background: var(--color-surface-deep);
+}
+.pkg-matrix thead .pkg-matrix__svc {
+  text-align: left;
+}
+.pkg-matrix__pkg-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-fg-1);
+}
+.pkg-matrix__pkg-tier {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-fg-3);
+  margin-top: 3px;
+}
+.pkg-matrix th[scope="row"] {
+  text-align: left;
+  font-weight: 400;
+  color: var(--color-fg-1);
+}
+.pkg-matrix__yes {
+  color: var(--color-accent);
+  display: inline-flex;
+}
+.pkg-matrix__no {
+  color: var(--color-fg-3);
+  opacity: 0.55;
+  display: inline-flex;
+}
+.pkg-matrix__custom {
+  font-size: 12.5px;
+  color: var(--color-fg-2);
+  font-style: italic;
+}
+.pkg-matrix__price-row th[scope="row"],
+.pkg-matrix__price-row td {
+  border-top: 2px solid var(--color-hairline-2);
+  font-weight: 600;
+}
+.pkg-matrix__price-row td {
+  color: var(--color-fg-1);
+}
+.pkg-matrix__price-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-fg-2);
+}
+.pkg-matrix__col-hl {
+  background: var(--color-accent-soft);
+}
+.pkg-matrix__pop {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 4px;
+}
