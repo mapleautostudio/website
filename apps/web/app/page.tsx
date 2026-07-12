@@ -22,6 +22,10 @@ export const metadata = {
   },
 };
 
+// Revalidate daily so the monthly Google-reviews refresh surfaces within a day
+// without making the homepage dynamic.
+export const revalidate = 86400;
+
 import { Nav } from "@/components/marketing/Nav";
 import { Hero } from "@/components/marketing/Hero";
 import { Services } from "@/components/marketing/Services";
