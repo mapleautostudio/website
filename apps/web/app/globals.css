@@ -768,3 +768,218 @@ input[type="number"] {
     grid-template-columns: 1fr;
   }
 }
+
+/* =================================================================
+   Admin pricing editor (/admin/pricing) — the editable grid
+   ================================================================= */
+.pe-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-card);
+  background: var(--color-elevated);
+}
+.pe-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 720px;
+}
+.pe-table th,
+.pe-table td {
+  border-top: 1px solid var(--color-hairline);
+  padding: 10px 12px;
+  vertical-align: middle;
+}
+.pe-table thead th {
+  border-top: none;
+  background: var(--color-surface-deep);
+  text-align: center;
+  vertical-align: top;
+  position: relative;
+}
+.pe-table thead th.pe-svc-h {
+  text-align: left;
+  min-width: 220px;
+}
+.pe-col-hl {
+  background: var(--color-accent-soft);
+}
+.pe-rowlabel {
+  text-align: left;
+  min-width: 220px;
+}
+.pe-td-val {
+  text-align: center;
+}
+.pe-section-label td {
+  background: var(--color-surface-deep);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-fg-3);
+  padding-top: 14px;
+  padding-bottom: 6px;
+}
+
+/* Inline editable text — a contenteditable / input that looks like plain text
+   until focused. */
+.pe-input {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--color-fg-1);
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 4px 6px;
+  width: 100%;
+  transition: border-color var(--dur-fast) var(--ease-precise);
+}
+.pe-input:hover {
+  border-color: var(--color-hairline);
+}
+.pe-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+}
+.pe-input--center {
+  text-align: center;
+}
+.pe-input--name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+.pe-input--tier {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-fg-2);
+}
+
+/* ✓ / ✗ / custom matrix cell button */
+.pe-tick {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 30px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background var(--dur-fast) var(--ease-precise);
+}
+.pe-tick:hover {
+  background: var(--color-accent-soft);
+}
+.pe-tick--yes {
+  color: var(--color-accent);
+}
+.pe-tick--no {
+  color: var(--color-fg-3);
+}
+.pe-tick--custom {
+  color: var(--color-fg-2);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 12.5px;
+}
+
+/* Row / column control buttons (move, delete, star, headline) */
+.pe-ctrls {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.pe-mini {
+  cursor: pointer;
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface);
+  color: var(--color-fg-2);
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 6px;
+  transition:
+    border-color var(--dur-fast) var(--ease-precise),
+    color var(--dur-fast) var(--ease-precise);
+}
+.pe-mini:hover {
+  border-color: var(--color-chrome);
+  color: var(--color-fg-1);
+}
+.pe-mini:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.pe-mini--on {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+.pe-mini--danger:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.pe-colctrls {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  margin-top: 8px;
+}
+.pe-pop-badge {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Add-on editor cards */
+.pe-addon {
+  background: var(--color-elevated);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  position: relative;
+}
+.pe-addon .pe-mini--del {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Help / how-to box */
+.pe-help {
+  background: var(--color-surface-deep);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-card);
+  padding: 18px 20px;
+  color: var(--color-fg-2);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.pe-help b {
+  color: var(--color-fg-1);
+}
+.pe-help kbd {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--color-elevated);
+  border: 1px solid var(--color-hairline);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+.pe-help ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+.pe-help li {
+  margin: 5px 0;
+}
