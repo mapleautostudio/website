@@ -1,0 +1,44 @@
+name: Refresh Google reviews
+
+# Scrapes the shop's Google Maps listing once a month and caches the reviews in
+# Supabase (public.reviews_cache). The homepage reads from that cache, so this
+# job being late or failing never takes reviews off the site — it just leaves
+# the last-good set in place. Run it by hand any time from the Actions tab.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   SUPABASE_URL                — e.g. https://xxxx.supabase.co
+#   SUPABASE_SERVICE_ROLE_KEY   — service role key (Project Settings → API)
+
+on:
+  schedule:
+    # 09:00 UTC on the 1st of every month.
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+
+# The job only reads the repo and writes to Supabase over HTTPS; deny the rest.
+permissions:
+  contents: read
+
+# Never run two refreshes at once.
+concurrency:
+  group: refresh-reviews
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install scraper deps
+        working-directory: .github/scripts
+        run: npm install --no-audit --no-fund
+      - name: Scrape and cache reviews
+        working-directory: .github/scripts
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node refresh-reviews.mjs
