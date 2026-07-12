@@ -219,11 +219,12 @@ function EarlyDays() {
           lineHeight: 1.3,
         }}
       >
-        We&apos;re a new studio, and our first reviews are coming in.
+        Nothing on this page is invented.
       </p>
       <p className="m-0 text-fg-2" style={{ fontSize: 15, lineHeight: 1.6 }}>
-        Every review on our page is a real customer on Google — unedited, never
-        paid for. If we&apos;ve detailed your car, a few words would mean a lot.
+        We&apos;re a new studio, so there&apos;s not much here yet. But every
+        review is a real customer on Google — unedited, never paid for. Been
+        in for a detail? Leave us one.
       </p>
       <div className="flex flex-wrap gap-3" style={{ marginTop: 4 }}>
         <a
