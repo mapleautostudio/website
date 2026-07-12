@@ -16,9 +16,19 @@ export function isAdminEmail(email: string | null | undefined) {
 
 export async function requireAdmin() {
   const supabase = await getSupabaseSessionClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+
+  let user = null;
+  try {
+    const {
+      data: { user: fetchedUser },
+    } = await supabase.auth.getUser();
+    user = fetchedUser;
+  } catch {
+    // Transient Supabase auth outage (e.g. Cloudflare 521 refreshing a stale
+    // token). Treat as unauthenticated and bounce to login rather than
+    // throwing a 500 out of the admin page render.
+    redirect("/admin/login");
+  }
 
   if (!user) {
     redirect("/admin/login");
