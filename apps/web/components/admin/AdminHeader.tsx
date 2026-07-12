@@ -41,6 +41,23 @@ export function AdminHeader({ email }: { email?: string }) {
           </span>
         </Link>
 
+        <nav className="flex items-center gap-5">
+          <Link
+            href="/admin"
+            className="text-fg-2 hover:text-chrome transition-colors"
+            style={{ fontSize: 13 }}
+          >
+            Bookings
+          </Link>
+          <Link
+            href="/admin/pricing"
+            className="text-fg-2 hover:text-chrome transition-colors"
+            style={{ fontSize: 13 }}
+          >
+            Pricing
+          </Link>
+        </nav>
+
         <div className="flex items-center gap-4">
           {email && (
             <span
