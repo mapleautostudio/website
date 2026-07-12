@@ -1,0 +1,9 @@
+{
+  "name": "maple-review-refresh",
+  "private": true,
+  "type": "module",
+  "description": "Isolated deps for the monthly Google-reviews refresh Action. Kept out of the app's dependency tree on purpose.",
+  "dependencies": {
+    "google-maps-review-scraper": "^3.0.0"
+  }
+}

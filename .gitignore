@@ -2,6 +2,7 @@
 /apps/*/node_modules
 /packages/*/node_modules
 /node_modules
+/.github/scripts/node_modules
 
 # next.js
 /apps/web/.next/
