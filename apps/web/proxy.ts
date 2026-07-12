@@ -25,7 +25,13 @@ export async function proxy(request: NextRequest) {
     },
   });
 
-  await supabase.auth.getUser();
+  try {
+    await supabase.auth.getUser();
+  } catch {
+    // Transient Supabase auth-endpoint failure (e.g. Cloudflare 521 while
+    // refreshing a stale token) must not crash the proxy. The admin route
+    // guard performs the authoritative auth check on the request itself.
+  }
 
   return response;
 }
