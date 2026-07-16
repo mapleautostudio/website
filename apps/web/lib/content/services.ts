@@ -129,7 +129,7 @@ export const SERVICES: Service[] = [
     faq: [
       { q: "How long does ceramic last?", a: "From three years for entry coatings to lifetime for the top tier — assuming care guide is followed." },
       { q: "Do I still need to wax?", a: "No. Ceramic replaces wax. Maintenance washes are recommended every 6–8 weeks." },
-      { q: "What does it not protect against?", a: "Stone chips, deep scratches, or impact damage. For that, see paint protection film." },
+      { q: "What does it not protect against?", a: "Stone chips, deep scratches, or impact damage. Ceramic is a chemical barrier, not a physical one — it won't stop rock chips." },
     ],
   },
   {
